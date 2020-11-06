@@ -1,0 +1,371 @@
+
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    
+    <!--====== Title ======-->
+    <title>Evolve | Sanitary Pad</title>
+    
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--====== Favicon Icon ======-->
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
+
+
+    <!-- CSS
+    ============================================ -->
+
+    <!--===== Vendor CSS (Bootstrap & Icon Font) =====-->
+
+    <!-- <link rel="stylesheet" href="assets/css/plugins/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/default.css"> -->
+
+
+    <!--===== Plugins CSS (All Plugins Files) =====-->
+    <!-- <link rel="stylesheet" href="assets/css/plugins/animate.css">
+    <link rel="stylesheet" href="assets/css/plugins/slick.css">
+    <link rel="stylesheet" href="assets/css/plugins/component.css">
+    <link rel="stylesheet" href="assets/css/plugins/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/plugins/jquery-ui.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/select2.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/photoswipe.css">
+    <link rel="stylesheet" href="assets/css/plugins/photoswipe-default-skin.css"> -->
+    
+    
+    <!--====== Main Style CSS ======-->
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+
+    <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
+	<link rel="stylesheet" href="assets/css/new/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/new/main.css" class="color-switcher-link">
+    <link rel="stylesheet" href="assets/css/vendor/plugins.min.css">
+    <link rel="stylesheet" href="assets/css/style.min.css"> 
+    
+</head>
+
+<body>
+
+
+    <!--====== preloader Start ======-->
+
+    <div class="preloader">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+
+    <!--====== preloader Ends ======-->
+    <?php 
+	$current_page="how_it_works";
+	 include('header.php');
+	?>
+    <!--====== Header Start ======-->
+
+    <!--====== Page Banner Start ======-->
+
+<section class="page-banner bg_cover" style="background-image: url(assets/images/page-banner-4.jpg);">
+        <div class="container">
+            <div class="page-banner-content text-center">
+                <h2 class="title">How It Works</h2>
+                <ol class="breadcrumb justify-content-center">
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                    <li class="breadcrumb-item active">How It Works</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <!--====== Page Banner Ends ======-->
+
+    <!--====== Service Start ======-->
+	  <section>
+<div id="canvas">
+		<div id="box_wrapper">
+
+			<section class="s-pt-100 s-pt-lg-100 s-pb-lg-100 ds process-part skew_right s-parallax top_white_line_big overflow-visible" id="steps">
+				<div class="container">
+					<div class="divider-65"></div>
+					<div class="row align-items-center c-mb-20 c-mb-lg-60">
+						<div class="col-12 col-lg-4">
+							<div class="step-left-part text-right">
+								<h2 class="step-title">
+									<span class="color-main">01</span>Customise your Pack!</h2>
+							</div>
+						</div>
+						<div class="col-12 col-lg-4">
+							<div class="step-center-part text-center">
+								<img src="assets/images/step_img_1.jpg" alt="">
+							</div>
+						</div>
+						<div class="col-12 col-lg-4">
+							<div class="step-right-part">
+								<p class="step-text">Select your own segregation of pads for your Light, Medium and Heavy flow days! Choose the default pack if unsure and of course, choose to change this configuration before each of your order!</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="row align-items-center right c-mb-20 c-mb-lg-60">
+						<div class="col-12 col-lg-4  order-lg-3">
+							<div class="step-left-part">
+								<h2 class="step-title color1">
+									<span class="color-main2">02</span>Plan your Period!</h2>
+							</div>
+						</div>
+						<div class="col-12 col-lg-4 order-lg-2">
+							<div class="step-center-part text-center">
+								<img src="assets/images/step_img_2.jpg" alt="">
+							</div>
+						</div>
+						<div class="col-12 col-lg-4 order-lg-1 text-right">
+							<div class="step-right-part ">
+								<p class="step-text">A surprise is not always pleasant! Hence, we keep you backed up with your monthly deliveries and expected delivery date for ‘No panic days’ ever!</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="row align-items-center c-mb-20 c-mb-lg-60">
+						<div class="col-12 col-lg-4">
+							<div class="step-left-part text-right part3">
+								<h2 class="step-title">
+									<span class="color-main3">03</span>Purchase Power Pay!</h2>
+							</div>
+						</div>
+						<div class="col-12 col-lg-4">
+							<div class="step-center-part text-center last">
+								<img src="assets/images/step_img_3.jpg" alt="">
+							</div>
+						</div>
+						<div class="col-12 col-lg-4">
+							<div class="step-right-part">
+								<p class="step-text">A pack of 15 that is a mindful speculation which keeps you prepared for utmost 2 cycles upon each purchase! </p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</section>
+		</div>
+		<!-- eof #box_wrapper -->
+	</div>
+	</section>
+	<!-- eof #canvas -->
+    <section class="services-page pt-50 pb-100">
+        <div class="container">
+            <div class="services-element">
+                <div class="row flex-md-row-reverse">
+                    <div class="col-md-6">
+                        <div class="services-element-image mt-50">
+                            <img src="assets/images/services/services-bg2.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="services-element-content mt-50">
+                            <h4 class="title">Directions of use!</h4>
+                           <ul style="list-style:disc;list-style: disc;
+    line-height: 50px;
+    padding-left: 20px;
+    padding-top: 30px;">
+						   <li>Peel off release paper from the back of the pad</li>
+						   <li>Stick the pad on panty and press firmly</li>
+						   <li>Peel off release paper from the wings</li>
+						   <li>Fold the wings around the panty and press firmly</li>
+						   </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+			
+			    <div class="services-element pt-70">
+                <div class="row flex-md-row-reverse">
+                  
+                    <div class="col-md-6">
+                        <div class="services-element-content mt-50" style="max-width: 100%;">
+                            <h4 class="title">How to dispose responsibly!</h4>
+                           <ul style="list-style:disc;list-style: disc;
+    line-height: 50px;
+    padding-left: 20px;
+    padding-top: 30px;">
+						   <li>Change every 6 hours (recommended) </li>
+						   <li>Wrap the used pad in the wrapper and dispose off in the trash</li>
+						   <li>Your BFF that looks after your health, hygiene and overall wellbeing with planting a new plant each time you are menstruating or choosing Evolve! </li>
+						   <li>Risk-free, Stress-free, Happy cycles!</li>
+						   </ul>
+                        </div>
+                    </div>
+					  <div class="col-md-6">
+                        <div class="services-element-image mt-50">
+                            <img src="assets/images/services/services-bg2.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </section>
+	
+	
+
+    <!--====== Service Ends ======-->
+
+    <!--====== Footer Start ======-->
+
+   <?php 
+   include('footer.php');
+   ?>
+
+    <!--====== Footer Ends ======-->
+
+    <!--====== BACK TOP TOP PART START ======-->
+
+    <a href="#" class="back-to-top"><i class="fal fa-chevron-up"></i></a>
+
+    <!--====== BACK TOP TOP PART ENDS ======-->
+
+    <!--====== Product Quick View Start ======-->
+  
+    <div class="modal fade" id="productQuick">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fal fa-times"></i></button>
+                </div> 
+                
+                <div class="product-quick-view">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="quick-view-image">
+                                <div class="quick-view-thumb">
+                                    <div class="quick-thumb-active">
+                                        <div class="single-quick-thumb">
+                                            <img src="assets/images/product/product-37.jpg" alt="">
+                                        </div>
+                                        <div class="single-quick-thumb">
+                                            <img src="assets/images/product/product-38.jpg" alt="">
+                                        </div>
+                                        <div class="single-quick-thumb">
+                                            <img src="assets/images/product/product-27.jpg" alt="">
+                                        </div>
+                                        <div class="single-quick-thumb">
+                                            <img src="assets/images/product/product-28.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="quick-view-preview">
+                                    <div class="quick-preview-active">
+                                        <div class="single-quick-preview">
+                                            <img src="assets/images/product/product-37.jpg" alt="">
+                                        </div>
+                                        <div class="single-quick-preview">
+                                            <img src="assets/images/product/product-38.jpg" alt="">
+                                        </div>
+                                        <div class="single-quick-preview">
+                                            <img src="assets/images/product/product-27.jpg" alt="">
+                                        </div>
+                                        <div class="single-quick-preview">
+                                            <img src="assets/images/product/product-28.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div>                                
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="quick-view-content">
+                                <h4 class="title">Oversized Check Dress</h4>
+                                <span class="sku-id">REF. 1104693 - TOMY</span>
+
+                                <div class="quick-price">
+                                    <span class="regular-price">£250.00</span>
+                                    <span class="sale-price">£200.00</span>
+                                </div>
+                                <div class="quick-quantity-cart-wishlist-compare flex-wrap">
+                                   <form action="#">
+                                        <div class="quick-quantity d-flex">
+                                            <button type="button" class="sub"><i class="fal fa-minus"></i></button>
+                                            <input type="text" value="1" />
+                                            <button type="button" class="add"><i class="fal fa-plus"></i></button>
+                                        </div>
+                                        <div class="quick-cart">
+                                            <button class="main-btn">Add to Cart</button>
+                                        </div>
+                                   </form>
+                                   <a href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" class="quick-wishlist"><i class="fal fa-heart"></i></a>
+                                   <a href="#" data-tooltip="tooltip" data-placement="top" title="Add to Compare" class="quick-compare"><i class="fal fa-repeat-alt"></i></a>
+                                </div>
+                                <div class="quick-description">
+                                    <p>Sed vitae eros a quam malesuada porttitor nec nec orci. Ut lacus augue, bibendum at tristique at, ornare eget quam. Donec volutpat ut nibh id sagittis. Morbi fringilla ac libero in consequat.</p>
+                                </div>
+                                <div class="quick-share">
+                                    <ul class="social">
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--====== Product Quick View Ends ======-->
+
+    <!--====== Overlay Start ======-->
+    
+    <div class="overlay"></div>
+
+    <!--====== Overlay Ends ======-->
+
+
+
+
+    <!--====== Jquery js ======-->
+    <script src="assets/js/vendor/jquery-3.5.1.min.js"></script>
+    <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
+    
+    <!--====== All Plugins js ======-->
+    <!-- <script src="assets/js/plugins/jquery-ui.min.js"></script>
+    <script src="assets/js/plugins/popper.min.js"></script>
+    <script src="assets/js/plugins/bootstrap.min.js"></script>
+    <script src="assets/js/plugins/slick.min.js"></script>
+    <script src="assets/js/plugins/modernizr.custom.js"></script>
+    <script src="assets/js/plugins/jquery.dlmenu.js"></script>
+    <script src="assets/js/plugins/jquery.paroller.min.js"></script>
+    <script src="assets/js/plugins/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/plugins/jquery.countdown.min.js"></script>
+    <script src="assets/js/plugins/select2.min.js"></script>
+    <script src="assets/js/plugins/photoswipe.min.js"></script>
+    <script src="assets/js/plugins/photoswipe-ui-default.min.js"></script>
+    <script src="assets/js/plugins/jquery.elevateZoom.min.js"></script>
+    <script src="assets/js/plugins/masonry.pkgd.min.js"></script>
+    <script src="assets/js/plugins/jquery.appear.min.js"></script>
+    <script src="assets/js/plugins/jquery.sticky-sidebar.min.js"></script>
+    <script src="assets/js/plugins/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/js/plugins/ajax-contact.js"></script> -->
+
+    <!-- <script src="assets/js/plugins/parallax.min.js"></script> -->
+
+    <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
+
+    <script src="assets/js/plugins.min.js"></script>
+
+    
+    <!--====== Main Activation  js ======-->
+    <script src="assets/js/main.js"></script>
+
+    <!--====== Google Map js ======-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ5y0EF8dE6qwc03FcbXHJfXr4vEa7z54"></script>
+    <script src="assets/js/map-script.js"></script>
+    
+</body>
+
+</html>
