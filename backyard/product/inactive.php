@@ -7,6 +7,7 @@
 	
 	if($a)
 	{
-		header("location:../View-Product");
+		header("location:../product/View-Product");
+		
 	}
 ?>

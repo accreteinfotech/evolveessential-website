@@ -106,7 +106,7 @@ function confirmationDelete(anchor)
 															{
 																$flag=1;
 																?>
-																	<td><a href="Inactive/<?php echo $cat['product_id'];?>" class="btn btn-neutral" style="background-color:#00b200;color:#ffffff;"><?php echo "Active";?></a></td>
+																	<td><a href="inactive.php?pid=<?php echo $cat['product_id'];?>" class="btn btn-neutral" style="background-color:#00b200;color:#ffffff;"><?php echo "Active";?></a></td>
 																	
 															<?php
 															}
@@ -115,7 +115,7 @@ function confirmationDelete(anchor)
 																$flag=0;
 																?>
 																
-																	<td><a href="Active/<?php echo $cat['product_id'];?>" class="btn btn-neutral" style="background-color:#FF0000;color:#ffffff;"><?php echo "Inactive";?></a></td>
+																	<td><a href="active.php?pid=<?php echo $cat['product_id'];?>" class="btn btn-neutral" style="background-color:#FF0000;color:#ffffff;"><?php echo "Inactive";?></a></td>
 																<?php
 															}
 															else{
