@@ -63,8 +63,7 @@
                                             <div class="form-group">
                                                 <!--<a href="forgot_password.php" class="text-dark float-right"><span class="font-12 text-primary">Forgot your password?</span></a>-->
                                                 <label class="float-left" for="password">Password</label>
-												<label class="float-right"><a href="forgot-password.php">Forgot Password?</a></label>
-                                                <input class="form-control" type="password"  id="password" name="password" value="<?php if(isset($_COOKIE['pwd'])){ echo $_COOKIE['pwd']; } ?>" placeholder="Enter your password">
+												<input class="form-control" type="password"  id="password" name="password" value="<?php if(isset($_COOKIE['pwd'])){ echo $_COOKIE['pwd']; } ?>" placeholder="Enter your password">
                                             </div>
 
                                             <div class="form-group mb-3">
