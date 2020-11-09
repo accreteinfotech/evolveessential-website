@@ -117,6 +117,16 @@ RewriteRule ^backyard/inventory/Update-Inventory/?$ backyard/inventory/update_in
 RewriteRule ^backyard/inventory/Edit-Inventory/([a-zA-Z0-9]+)?$ backyard/inventory/edit_inventory.php?cid=$1
 RewriteRule ^backyard/inventory/Delete-Inventory/([a-zA-Z0-9]+)?$ backyard/inventory/delete_inventory.php?cid=$1
 
+#Coupon Links
+RewriteRule ^backyard/coupon/Active/([a-zA-Z0-9]+)?$ backyard/coupon/active.php?pid=$1
+RewriteRule ^backyard/coupon/Inactive/([a-zA-Z0-9]+)?$ backyard/coupon/inactive.php?pid=$1
+RewriteRule ^backyard/coupon/Add-Coupon/?$ backyard/coupon/add_coupon.php
+RewriteRule ^backyard/coupon/View-Coupon/?$ backyard/coupon/view_coupon.php
+RewriteRule ^backyard/coupon/Insert-Coupon/?$ backyard/coupon/insert_coupon.php
+RewriteRule ^backyard/coupon/Update-Coupon/?$ backyard/coupon/update_coupon.php
+RewriteRule ^backyard/coupon/Edit-Coupon/([a-zA-Z0-9]+)?$ backyard/coupon/edit_coupon.php?cid=$1
+RewriteRule ^backyard/coupon/Delete-Coupon/([a-zA-Z0-9]+)?$ backyard/coupon/delete_coupon.php?cid=$1
+
 #Material Links
 RewriteRule ^backyard/material/Add-Material/?$ backyard/material/add_material.php
 RewriteRule ^backyard/material/View-Material/?$ backyard/material/view_material.php

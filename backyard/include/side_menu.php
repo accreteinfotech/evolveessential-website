@@ -90,6 +90,13 @@
                                     <li><a href="../product_gallery/View-Product">- View Gallery</a></li>
                                 </ul>
                             </li>
+                            <li class="treeview">
+                                <a href="javascript:void(0)"><i class="zmdi zmdi-account-box-phone"></i> <span>Coupon</span> <i class="fa fa-angle-right"></i></a>
+                                <ul class="treeview-menu">
+                                    <li><a href="../coupon/Add-Coupon">- Add Coupon</a></li>
+                                    <li><a href="../coupon/View-Coupon">- View Coupon</a></li>
+                                </ul>
+                            </li>
 							<!--<li class="treeview">
                                 <a href="javascript:void(0)"><i class="zmdi zmdi-account-box-phone"></i> <span>Product Price</span> <i class="fa fa-angle-right"></i></a>
                                 <ul class="treeview-menu">
