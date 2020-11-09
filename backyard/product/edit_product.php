@@ -175,12 +175,9 @@
 											</div>
 									    </div>
 										
-										<div class="form-group">
-                                            <label for="exampleInputName1">Product Shipping Charges ( Only Numaric Value Ex: 900 )</label>
-											<input type="text" name="product_shipping_charge" value="<?php echo $ad['product_shipping_charge']; ?>" placeholder="Enter Charges" class="form-control" id="product_shipping_charge">
+											<input type="hidden" name="product_shipping_charge" value="<?php echo $ad['product_shipping_charge']; ?>" placeholder="Enter Charges" class="form-control" id="product_shipping_charge">
 										
-										</div>
-										</div>
+										
 										<div class="form-group">
                                             <label for="exampleInputName1">Product Image</label>
 											<input type="file" name="product_image" id="product_image" class="form-control">

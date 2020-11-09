@@ -126,10 +126,8 @@
 											<div>
 											<span id="s5" style="color:red;"></span></div>
 									    </div>
-										<div class="form-group">
-                                            <label for="exampleInputName1">Product Shipping Charges ( Only Numaric Value Ex: 900 )</label>
-											<input type="text" name="product_shipping_charge" placeholder="Enter Charges" class="form-control" id="product_shipping_charge">
-									    </div>
+											<input type="Hidden" name="product_shipping_charge" placeholder="Enter Charges" class="form-control" id="product_shipping_charge">
+									    
 									   </div>
 										<div class="form-group">
                                             <label for="exampleInputName1">Product Image</label>
@@ -137,6 +135,11 @@
 											<div>
 											<span id="s8" style="color:red;"></span></div>
 									    </div>
+									    <div class="form-group" id="price2" style="display:block;">
+                                            <label>Product Gallery Images</label>
+                                              <input required type="file" class="form-control" name="files[]" id="product_gallery_thumb_image" multiple >
+											<div><span id="s2" style="color:red;"></span></div>
+                                        </div>
 										<h4 class="card-title">Product SEO Details</h4>
 										<div class="form-group">
                                             <label for="exampleInputName1">Page Title</label>

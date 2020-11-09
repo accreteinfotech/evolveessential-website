@@ -83,7 +83,6 @@ function confirmationDelete(anchor)
 												<th>Product Status</th>
 												<th>Product Code</th>
 												<th>Product Price</th>
-												<th>Product Shipping</th>
 												 <th>Edit</th>
 												<th>Remove</th>
                                             </tr>
@@ -140,7 +139,6 @@ function confirmationDelete(anchor)
 																<?php
 															}
 														?>
-														<td>&#8377 <?php echo $cat['product_shipping_charge']; ?></td>
 														 
 													<td><a href="Edit-Product/<?php echo $cat['product_id']; ?>"><img style="height: 30px;width: 30px;"  src="../img/edit.png"></a></td>
 														<td><a onClick='javascript:confirmationDelete($(this));return false;' href="Delete-Product/<?php echo $cat['product_id'];?>"><img style="height: 30px;width: 30px;"  src="../img/delete.png"></a></td>
