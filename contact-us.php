@@ -291,6 +291,7 @@
     <!--====== Jquery js ======-->
     <script src="assets/js/vendor/jquery-3.5.1.min.js"></script>
     <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
+    
     <script src="backyard/js/jquery.min.js"></script>
     <script src="backyard/js/jquery.validate.js"></script>
     <script src="backyard/js/jquery.validate.min.js"></script>
