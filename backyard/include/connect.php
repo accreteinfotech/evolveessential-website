@@ -26,8 +26,9 @@
 	$port="587";
 	$email_username="waxberry@accreteit.com";
 	$email_password="Kem_6o??";
-	$team_name="Wax-Berry Team";
+	$team_name="Evolve Essential";
 	$send_address="harsh.fruitwala6579@gmail.com";
+	$send_address="yashrajpindi@gmail.com";
 	
 	//Payment Getway API 
 	//Live Api

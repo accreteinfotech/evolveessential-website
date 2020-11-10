@@ -63,7 +63,7 @@ $contact_des=$_POST['contact_des'];
 					$mail->Password = $email_password;
 
 					$mail->SetFrom($email_username, $team_name);
-					$mail->AddAddress('chauhandinal2018@gmail.com');
+					$mail->AddAddress('yashrajpindi@gmail.com');
 					$mail->AddAddress('support@infiniqemarketing.com');
 
 					$mail->Subject = trim("Contact Inquiry");
