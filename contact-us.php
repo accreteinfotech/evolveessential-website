@@ -123,7 +123,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="contact-form pt-20">
-                        <form id="contact-form" action="insert_mail.php" method="post">
+                        <form id="cform" action="insert_mail.php" method="post">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="single-form">
@@ -291,7 +291,7 @@
     <!--====== Jquery js ======-->
     <script src="assets/js/vendor/jquery-3.5.1.min.js"></script>
     <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
-    
+
     <script src="backyard/js/jquery.min.js"></script>
     <script src="backyard/js/jquery.validate.js"></script>
     <script src="backyard/js/jquery.validate.min.js"></script>
@@ -334,7 +334,7 @@
     <script>
     //Form Validation
         $( document ).ready( function () {
-            $( "#contact-form" ).validate( {
+            $( "#cform" ).validate( {
                 rules: {
                     
                     contact_name: "required",

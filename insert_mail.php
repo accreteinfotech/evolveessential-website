@@ -1,22 +1,4 @@
-<?php
-    ob_start();
-?>
-<!doctype html>
-<script src="js/jquery-3.2.1.min.js"></script>
-<html lang="en">
-    <body>
-        
-<!--<a href="img/Infiniqe&didotProfile.pdf" download> <button type="button" id="downloadbtn">Download</button></a>
 
-<script>
-$( document ).ready(function() {
-    //jQuery('#downloadbtn').click();
-    
-  $( "#downloadbtn" ).click();
-});
-</script>-->
-</body>
-</html>
 <?php
 
 include 'backyard/include/connect.php';
