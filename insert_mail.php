@@ -8,7 +8,7 @@ $contact_email=$_POST['contact_email'];
 $contact_phone=$_POST['contact_phone'];
 $contact_website=$_POST['contact_website'];
 $contact_des=$_POST['contact_des'];
-	$sql=$link->insert("contact",array("contact_name"=>$contact_name,"contact_email"=>$contact_email,"contact_website"=>$contact_website,"contact_phone"=>$contact_phone,"contact_des"=>$contact_des));
+	$sql=$link->insert("contact",array("contact_name"=>$contact_name,"contact_email"=>$contact_email,"contact_website"=>$contact_website,"contact_pno"=>$contact_phone,"contact_des"=>$contact_des));
 	if($sql)
 
 
