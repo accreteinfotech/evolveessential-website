@@ -7,7 +7,7 @@ RewriteRule ^About/?$ about.php
 RewriteRule ^Account/?$ my-account.php
 RewriteRule ^Product/?$ product.php
 RewriteRule ^All-Categories/?$ categories.php
-RewriteRule ^Blogs/?$ blog.php
+RewriteRule ^Blogs/?$ blogs.php
 RewriteRule ^Our-Works/?$ our-works.php
 RewriteRule ^Our-Clients/?$ our-clients.php
 RewriteRule ^Contact-us/?$ contact.php

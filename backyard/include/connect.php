@@ -14,11 +14,11 @@
 //	$site_url="http://accreteit.com/wax-berry/";
 	$project_logo=$site_url."images/logo.png";
 	
-	/*$control=$link->rawQueryOne("select * from inventory_control");
+	$control=$link->rawQueryOne("select * from inventory_control");
 	$warning=$control['inventory_control_warning'];
 	$danger=$control['inventory_control_danger'];
 	$page_name= basename($_SERVER['PHP_SELF']);
-	$per_page =30;*/
+	$per_page =30;
 	//define how many products for a page
 	
 	//Email Config
