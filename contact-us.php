@@ -123,31 +123,31 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="contact-form pt-20">
-                        <form id="contact-form" action="#" method="post">
+                        <form id="contact-form" action="insert_mail.php" method="post">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="single-form">
-                                        <input type="text" name="name" placeholder="Your Name">
+                                        <input type="text" name="contact_name" id="contact_name" placeholder="Your Name">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="single-form">
-                                        <input type="email" name="email" placeholder="Your Email">
+                                        <input type="email" name="contact_email" id="contact_email" placeholder="Your Email">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="single-form">
-                                        <input type="text" name="website" placeholder="Website">
+                                        <input type="text" name="contact_website" id="contact_website" placeholder="Website">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="single-form">
-                                        <input type="text" name="number" placeholder="Your Phone Number">
+                                        <input type="text" name="contact_phone" id="contact_phone" placeholder="Your Phone Number">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="single-form">
-                                        <textarea name="message" placeholder="Your Message"></textarea>
+                                        <textarea name="contact_des" id="contact_des" placeholder="Your Message"></textarea>
                                     </div>
                                 </div>
                                 <p class="form-message"></p>
@@ -291,6 +291,9 @@
     <!--====== Jquery js ======-->
     <script src="assets/js/vendor/jquery-3.5.1.min.js"></script>
     <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
+    <script src="backyard/js/jquery.min.js"></script>
+    <script src="backyard/js/jquery.validate.js"></script>
+    <script src="backyard/js/jquery.validate.min.js"></script>
     
     <!--====== All Plugins js ======-->
     <!-- <script src="assets/js/plugins/jquery-ui.min.js"></script>
@@ -325,6 +328,70 @@
     <!--====== Google Map js ======-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ5y0EF8dE6qwc03FcbXHJfXr4vEa7z54"></script>
     <script src="assets/js/map-script.js"></script>
+
+
+    <script>
+    //Form Validation
+        $( document ).ready( function () {
+            $( "#contact-form" ).validate( {
+                rules: {
+                    
+                    contact_name: "required",
+                    contact_email:
+                    {
+                      required: true,
+                      email: true
+                    },
+                    contact_website:"required",
+                    contact_phone:
+                    {
+                      required: true,
+                      digits: true,
+                      minlength: 10,
+                      maxlength: 10
+                    },
+                    contact_des:"required",
+                },
+                messages: {
+                    
+                    contact_name: "Please Enter Contact Name*",
+                    contact_email:
+                    {
+                      required: "Please Enter E-mail *",
+                      email: "Please Enter Valid E-mail *",
+                    },
+                    contact_phone:
+                    {
+                      required: "Please Enter Phone No. *",
+                      digits: "Please Enter Only Digits *",
+                      minlength: "Please Enter Only 10 Digits *",
+                      maxlength: "Please Enter Only 10 Digits *"
+                    },
+                    contact_website: "Please Enter Website *",
+                    contact_des: "Please Enter Message *",
+                    
+                },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                    // Add the `invalid-feedback` class to the error element
+                    error.addClass( "invalid-feedback" );
+
+                    if ( element.prop( "type" ) === "checkbox" ) {
+                        error.insertAfter( element.next("br") );
+                    } else {
+                        error.insertAfter( element );
+                    }
+                },
+                highlight: function ( element, errorClass, validClass ) {
+                    $( element ).addClass( "is-invalid" ).removeClass( "is-valid" );
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $( element ).addClass( "is-valid" ).removeClass( "is-invalid" );
+                }
+            } );
+
+        } );
+    </script>
     
 </body>
 
