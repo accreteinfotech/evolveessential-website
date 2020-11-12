@@ -35,7 +35,18 @@
                                 <a style="color:#fff;" href="Home">Home</a>
 								</li>
 								<li class="<?php if ($current_page=="about") {echo "active"; }?>"><a style="color:#fff;" href="About">About us</a></li>
-								<li class="<?php if ($current_page=="product") {echo "active"; }?>"><a style="color:#fff;" href="Product">Products</a></li>
+								<?php
+								$sql=$link->rawQuery("select * from product where is_active1 = 1 and product_delete = 0");
+								if($link->count > 0)
+								{
+									foreach($sql as $cat)
+									{
+									?>
+								<li class="<?php if ($current_page=="product") {echo "active"; }?>"><a style="color:#fff;" href="Product/<?php echo $cat['product_alias'] ?>"><?php echo $cat['product_alias'] ?></a></li>
+								<?php
+									}
+								}
+								?>
 								<li class="<?php if ($current_page=="how_it_works") {echo "active"; }?>"><a style="color:#fff;" href="how-it-works.php">How It Works</a></li>
 								<li class="<?php if ($current_page=="why_evolve") {echo "active"; }?>"><a style="color:#fff;" href="why-evolve.php">Why Evolve</a></li>
 								<li class="<?php if ($current_page=="blogs") {echo "active"; }?>"><a style="color:#fff;" href="Blogs">Blogs</a></li>
@@ -50,7 +61,18 @@
                                 <a href="Home">Home</a>
 								</li>
 								<li class="<?php if ($current_page=="about") {echo "active"; }?>"><a href="About">About us</a></li>
-								<li class="<?php if ($current_page=="product") {echo "active"; }?>"><a href="Product">Products</a></li>
+								<?php
+								$sql=$link->rawQuery("select * from product where is_active1 = 1 and product_delete = 0");
+								if($link->count > 0)
+								{
+									foreach($sql as $cat)
+									{
+									?>
+								<li class="<?php if ($current_page=="product") {echo "active"; }?>"><a href="Product/<?php echo $cat['product_alias'] ?>"><?php echo $cat['product_alias'] ?></a></li>
+								<?php
+									}
+								}
+								?>
 								<li class="<?php if ($current_page=="how_it_works") {echo "active"; }?>"><a href="how-it-works.php">How It Works</a></li>
 								<li class="<?php if ($current_page=="why_evolve") {echo "active"; }?>"><a href="why-evolve.php">Why Evolve</a></li>
 								<li class="<?php if ($current_page=="blogs") {echo "active"; }?>"><a href="Blogs">Blogs</a></li>

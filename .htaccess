@@ -31,7 +31,7 @@ RewriteRule ^Insert-Checkout/?$ insert_checkout.php
 RewriteRule ^Success/([a-zA-Z0-9]+)?$ send.php?sid=$1
 RewriteRule ^Cancel/([a-zA-Z0-9]+)?$ cancel.php?oid=$1
 RewriteRule ^Cancel$ cancel.php
-RewriteRule ^Product/([a-zA-Z0-9-_]+)?$ product.php?cid=$1
+RewriteRule ^Product/([a-zA-Z0-9-_]+)?$ product.php?pid=$1
 RewriteRule ^Series/([a-zA-Z0-9-_]+)?$ series.php?cid=$1
 RewriteRule ^All-Products/([a-zA-Z0-9-_]+)?$ product.php?pid=$1
 RewriteRule ^Priority-Products/([a-zA-Z0-9-_]+)?$ product.php?bid=$1

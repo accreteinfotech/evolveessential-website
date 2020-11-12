@@ -1,13 +1,52 @@
-
+<?php
+    ob_start();
+	include 'backyard/include/connect.php';
+    session_start();
+    $pid=$_REQUEST['pid'];
+    $p = $link->rawQueryOne("select * from product where product_alias=?",array($pid));
+    if($link->count > 0){
+        $ppid = $p['product_id'];
+    }
+    //echo $ppid;
+?>
 <!doctype html>
 <html class="no-js" lang="en">
-
+<?php
+$sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pid'");
+    if($link->count > 0)
+    {
+        $product_id=$sql['product_id'];
+        $product_name=$sql['product_name'];
+        $product_image=$sql['product_image'];
+        $product_alias=$sql['product_alias'];
+        //$product_max_qty=$sql['product_max_qty'];
+        $product_code=$sql['product_code'];
+        $product_price=$sql['product_price'];
+		
+		$product_description=$sql['product_description'];
+        $additional_information=$sql['additional_information'];
+        $product_short_desc=$sql['product_short_desc'];
+        
+        $seo_title=$sql['seo_title'];
+        $seo_meta_title=$sql['seo_meta_title'];
+        $seo_meta_description=$sql['seo_meta_description'];
+        $seo_keywords=$sql['seo_keywords'];
+        
+        $product_og_title=$sql['product_og_title'];
+        $product_og_description=$sql['product_og_description'];
+        $product_og_url=$sql['product_og_url'];
+        if($seo_title=="")
+        {
+            $seo_title=$product_name;
+        }
+    }
+?>
 <head>
     <meta charset="utf-8">
     
     <!--====== Title ======-->
     <?php
-    include 'backyard/include/connect.php';
+    //include 'backyard/include/connect.php';
     $seo=$link->rawQueryone("select * from page_seo where page_seo_url=?",array($page_name));
     if($link->count > 0)
     {
@@ -100,10 +139,10 @@
     <section class="page-banner bg_cover" style="background-image: url(assets/images/page-banner-4.jpg);">
         <div class="container">
             <div class="page-banner-content text-center">
-                <h2 class="title">Revolve the Feel </h2>
+                <h2 class="title"><?php echo $product_alias; ?> </h2>
                 <ol class="breadcrumb justify-content-center">
-                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                    <li class="breadcrumb-item active">Revolve the Feel</li>
+                    <li class="breadcrumb-item"><a href="Home">Home</a></li>
+                    <li class="breadcrumb-item active"><?php echo $product_alias; ?></li>
                 </ol>
             </div>
         </div>
@@ -125,36 +164,34 @@
                             {"src": "assets/images/product/product-26.jpg", "w": 600, "h": 743}
                         ]'><i class="far fa-search-plus"></i></button>
                         
+						
                         <div class="product-simple-preview-image">
                             <img class="product-zoom" src="assets/images/product/product-37.jpg" alt="">
                         </div>
                         <div id="gallery_01" class="product-simple-thumb-image">
+						<?php
+							$sql=$link->rawQuery("select * from product_gallery pg,product p where p.product_id=pg.product_id and p.product_alias=?",array($product_alias)); 
+							if($sql)
+							{
+								foreach($sql as $cat)
+								{
+									
+							?>
                             <div class="single-product-thumb">
                                 <a class="active" href="#" data-image="assets/images/product/product-37.jpg">
-                                    <img src="assets/images/product/product-37.jpg" alt="">
+                                    <img src="backyard/images/product_gallery_thumb_image/<?php echo $cat['product_gallery_thumb_image']; ?>" alt="">
                                 </a>                                
                             </div>
-                            <div class="single-product-thumb">
-                                <a href="#" data-image="assets/images/product/product-38.jpg">
-                                    <img src="assets/images/product/product-38.jpg" alt="">
-                                </a> 
-                            </div>
-                            <div class="single-product-thumb">
-                                <a href="#" data-image="assets/images/product/product-25.jpg">
-                                    <img src="assets/images/product/product-25.jpg" alt="">
-                                </a> 
-                            </div>
-                            <div class="single-product-thumb">
-                                <a href="#" data-image="assets/images/product/product-26.jpg">
-                                    <img src="assets/images/product/product-26.jpg" alt="">
-                                </a>
-                            </div>
+						<?php
+								}
+							}
+						?>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="product-simple-details mt-50">
-                        <h4 class="title">Revolve the Feel</h4>
+                        <h4 class="title"><?php echo $product_alias; ?></h4>
                      
                         <p class="review">
                             <i class="fas fa-star review-on"></i>
@@ -166,16 +203,10 @@
                         </p>
 						
 						     <div class="product-description" style="padding-bottom:30px;">
-                            <p style="text-align:justify;">Your period partner that allows a fresh breather and all-round protection, that also contributes from your share towards nature!! Evolve, takes care, that each piece of used product goes into a degradable process into nature and hence inculcate a sense of responsibility with the usage of our daily hygiene care products. </p>
+                            <p style="text-align:justify;"><?php echo $product_description; ?></p>
 
                             <ul class="description-list">
-                                <li>Fragrance free</li>
-                                <li>No Toxic chemicals included</li>
-                                <li>Wider wings and Back for extra protection</li>
-                                <li>Tailored to suit your flow: Light/ Medium/ Heavy</li>
-                                <li>Rash free/ Ultra-thin yet protective/ Soft and Dry</li>
-                                <li>Moisture lock technology that prevent leakages</li>
-                                <li>Safe, Hygienic and ecological disposal</li>
+                                <li><?php echo $additional_information; ?></li>
                             </ul>
                         </div>
 
@@ -198,23 +229,6 @@
                                </div>
 						   </form>
 							</div>
-		                <div class="product-quantity-cart-wishlist-compare flex-wrap" style="border: 1px solid #000;border-bottom: none;">	
-									 <form action="#" style="width:100%;">
-							    <div class="col-lg-12">
-							 <div class="col-lg-8" style="float:left;">
-							<span style="color:#ef7b4c;font-weight:700;">Medium flow (Large) 280mm</span>
-							</div>
-							 <div class="col-lg-4" style="float:right;">
-                                 <div class="product-quantity d-flex">
-								 
-                                     <button type="button" class="sub"><i class="fal fa-minus"></i></button>
-                                     <input type="text" value="5" />
-                                     <button type="button" class="add"><i class="fal fa-plus"></i></button>
-                                 </div>
-                                 </div>
-                               </div> 
-							   </form>
-							 </div>
 						<div class="product-quantity-cart-wishlist-compare flex-wrap" style="border: 1px solid #000;">							 
 							  	 <form action="#" style="width:100%;">
 							    <div class="col-lg-12">
