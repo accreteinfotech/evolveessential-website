@@ -117,14 +117,106 @@
                         <h4 class="title">Creat New Account</h4>
 
                         <div class="login-register-form">
-                            <form action="#">
+                            <form id="formsubmit" action="register_code.php" method="post">
                                 <div class="single-form">
-                                    <label>Username or email address *</label>
-                                    <input type="email">
+                                     <label>Full Name *</label>
+                                        <input type="text" name="user_full_name" id="user_full_name" value="">
                                 </div>
                                 <div class="single-form">
-                                    <label>Password</label>
-                                    <input type="password">
+                                    <label>User Company *</label>
+                                        <input type="text" name="user_company" id="user_company" value="">
+                                </div>
+                                <div class="single-form">
+                                     <label>Email address *</label>
+                                        <input type="email" name="user_email" id="user_email" value="">
+                                </div>
+                                <div class="single-form">
+                                    <label for="upassword">Password *</label>
+                                        <input type="password" name="user_password" id="user_password" value="">
+                                        <span toggle="#user_password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                </div>
+                                <div class="single-form">
+                                   <label for="ucpassword">Confirm Password *</label>
+                                        <input type="password" name="user_cpassword" id="user_cpassword" value="">
+                                        <span toggle="#user_cpassword" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                </div>
+                                <div class="single-form">
+                                    <label>Country *</label>
+                                        <select style="width: 100%;
+    height: 50px;
+    padding: 0 15px;
+    border: 1px solid #ebebeb;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+    font-size: 14px;
+    color: #232324;" onchange="countrycheck(this.value);" name="user_country" id="user_country" style="width:100%;">
+                                        <option value="">Select Country</option>
+                                        <?php
+                                                $country=$link->rawQuery("select * from  countries");
+                                                if($link->count > 0)
+                                                {
+                                                    foreach($country as $cont)
+                                                    {
+                                                        ?>
+                                                         <option value="<?php echo $cont['id']; ?>"><?php echo $cont['name']; ?></option>
+                                                        <?php
+                                                    }
+                                                }
+                                            ?>
+                                        
+                                        </select>.
+                                    </div>
+                                    <div class="single-form" id="mystate">
+                                    <label>STATE *</label>
+                                <select style="width: 100%;
+    height: 50px;
+    padding: 0 15px;
+    border: 1px solid #ebebeb;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+    font-size: 14px;
+    color: #232324;" onchange="citycheck(this.value);" name="user_state" id="user_state" style="width:100%;">
+                                    <option value="">Select State</option>
+                                </select>                     
+                                </div>
+                                <div class="single-form" id="mycity">
+                                    <label>CITY *</label>
+                                 <select style="width: 100%;
+    height: 50px;
+    padding: 0 15px;
+    border: 1px solid #ebebeb;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+    font-size: 14px;
+    color: #232324;" name="user_city" id="user_city" style="width:100%;">
+                                    <option value="">Select City</option>
+                                </select>
+                                </div>
+                                <div class="single-form">
+                                    <label>ADDRESS 1 *</label>
+                                        <input type="text" name="user_add1" id="user_add1" placeholder="Address 1*">
+                                </div>
+                                <div class="single-form">
+                                    <label>ADDRESS 2 *</label>
+                                        <input type="text" name="user_add2" id="user_add2" placeholder="Address 2*">
+                                </div>
+                                <div class="single-form">
+                                    <label>PINCODE *</label>
+                                        <input type="text" name="user_pincode" id="user_pincode" placeholder="Pincode*">
+                                </div>
+                                <div class="single-form">
+                                    <label for="uphone">Phone Number&nbsp;<span
+                                                class="required">*</span></label>
+                                        <input type="phone" name="user_phone" id="user_phone" value="">
                                 </div>
                                 <div class="single-form">
                                     <button class="main-btn btn-block">Register</button>
@@ -134,6 +226,7 @@
                                     <label>Already have an account?</label>
                                     <a href="login.php" class="main-btn main-btn-2 btn-block">Log in instead!</a>
                                 </div>
+
                             </form>
                         </div>
                     </div>
@@ -311,6 +404,233 @@
     <!--====== Google Map js ======-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ5y0EF8dE6qwc03FcbXHJfXr4vEa7z54"></script>
     <script src="assets/js/map-script.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.validate.js"></script>
+<script src="assets/js/jquery.validate.min.js"></script>
+    <script>
+    //Form Validation
+        $( document ).ready( function () {
+            $( "#formsubmit" ).validate( {
+                rules: {
+                    user_full_name: "required",
+                    user_company: "required",
+                    user_email:
+                    {
+                      required: true,
+                      email: true
+                    },
+                    user_phone:
+                    {
+                      required: true,
+                      digits: true,
+                      minlength: 10,
+                      maxlength: 10
+                    },
+                    user_pincode:
+                    {
+                      required: true,
+                      digits: true,
+                      minlength: 6,
+                      maxlength: 6
+                    },
+                    user_country: "required",
+                    user_state: "required",
+                    user_city: "required",
+                    user_address: "required",
+                    user_company: "required",
+                    user_add1: "required",
+                    user_add2: "required",
+                    privacy1: "required",
+                    privacy2: 
+                    {
+                      equalTo: "#privacy1"
+                    },
+                    user_password: "required",
+                    user_cpassword:
+                    {
+                      required: true,
+                      equalTo: "#user_password"
+                    },
+                },
+                messages: {
+                    
+                    user_full_name: "Please Enter Username*",
+                    user_company: "Please Enter Company*",
+                    user_email:
+                    {
+                      required: "Please Enter E-mail *",
+                      email: "Please Enter Valid E-mail *",
+                    },
+                    user_phone:
+                    {
+                      required: "Please Enter Phone No. *",
+                      digits: "Please Enter Only Digits *",
+                      minlength: "Please Enter Only 10 Digits *",
+                      maxlength: "Please Enter Only 10 Digits *"
+                    },
+                    user_pincode:
+                    {
+                      required: "Please Enter Pincode *",
+                      digits: "Please Enter Only Digits *",
+                      minlength: "Please Enter Only 6 Digits *",
+                      maxlength: "Please Enter Only 6 Digits *"
+                    },
+                    user_country: "Please Select Country *",
+                    user_state: "Please Select State *",
+                    user_city: "Please Select City *",
+                    user_address: "Please Enter Address *",
+                    user_add1: "Please Enter Address Line 1 *",
+                    user_add2: "Please Enter Address Line 2 *",
+                    privacy1: "Please Accept Privacy Policy *",
+                    privacy2:
+                    {
+                      equalTo: "Please Accept Privacy Policy *"
+                    },
+                    user_password: "Please Enter Password *",
+                    user_cpassword:
+                    {
+                      required: "Please Enter Confirm Password *",
+                      equalTo: "Both Password Not Match*"
+                    },
+                    
+                },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                    // Add the `invalid-feedback` class to the error element
+                    error.addClass( "invalid-feedback" );
+
+                    if ( element.prop( "type" ) === "checkbox" ) {
+                        error.insertAfter( element.next("br") );
+                    } else {
+                        error.insertAfter( element );
+                    }
+                },
+                highlight: function ( element, errorClass, validClass ) {
+                    $( element ).addClass( "is-invalid" ).removeClass( "is-valid" );
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $( element ).addClass( "is-valid" ).removeClass( "is-invalid" );
+                }
+            } );
+
+        } );
+</script>
+<script>
+
+    $(".toggle-password").click(function() {
+
+          $(this).toggleClass("lynessa-Input lynessa-Input--text");
+          var input = $($(this).attr("toggle"));
+          if (input.attr("type") == "password") {
+            input.attr("type", "text");
+          } else {
+            input.attr("type", "password");
+          }
+        });
+
+    function mailcheck(val)
+        {
+            $.ajax({
+             type: "POST",
+               url: "mail_check.php",
+               data: "user_email="+val,
+                    
+                    // serializes the form's elements.
+               success: function(data)
+               {
+                    if(data == 'already')
+                    {
+                        $("#ererror").html("Existing Mail");
+                        $("#ererror").css("color","red");
+                        $("#reg").prop('disabled', true);
+                        //mailcheck.preventDefault();
+                        //swal("Good job!", "You clicked the button!", "warning");
+                    }
+                    else
+                    {
+                        $("#ererror").html("");
+                        $("#reg").prop('disabled', false);
+                    }
+               }
+            });
+            
+        }
+
+    //country check
+    $(document).ready(function(){
+        $.ajax({
+            type: "POST",
+           url: "get_country.php",
+                
+                // serializes the form's elements.
+           success: function(data)
+           {
+            //alert(data);
+                if(data != '')
+                {
+                    //$("#user_state").html(data);
+                    $("#mycountry").html(data);
+                    //$("#rerror").html("Existing Mail! Please Enter New Mail For Registration");
+                    //$("#reg").prop('disabled', true);
+                    //mailcheck.preventDefault();
+                    //swal("Good job!", "You clicked the button!", "warning");
+                }
+           }
+        });
+    });
+
+function countrycheck(val)
+    {
+        citycheck(val);
+       // alert(val);
+        $.ajax({
+            type: "POST",
+           url: "country_check.php",
+           data: "user_country="+val,
+                
+                // serializes the form's elements.
+           success: function(data)
+           {
+            //alert(data);
+                if(data != '')
+                {
+                    //$("#user_state").html(data);
+                    $("#mystate").html(data);
+                    //$("#rerror").html("Existing Mail! Please Enter New Mail For Registration");
+                    //$("#reg").prop('disabled', true);
+                    //mailcheck.preventDefault();
+                    //swal("Good job!", "You clicked the button!", "warning");
+                }
+           }
+        });
+        
+    }
+    //city check
+    function citycheck(val)
+    {
+       //alert(val);
+        $.ajax({
+            type: "POST",
+           url: "city_check.php",
+           data: "user_city="+val,
+                
+                // serializes the form's elements.
+           success: function(data)
+           {
+            //alert(data);
+                if(data != '')
+                {
+                    $("#mycity").html(data);
+                    //$("#rerror").html("Existing Mail! Please Enter New Mail For Registration");
+                    //$("#reg").prop('disabled', true);
+                    //mailcheck.preventDefault();
+                    //swal("Good job!", "You clicked the button!", "warning");
+                }
+           }
+        });
+        
+    }
+</script>
     
 </body>
 
