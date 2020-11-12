@@ -14,7 +14,18 @@
 }
    </style>
    <header class="header-area">
-
+	 <?php
+    if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=null)
+    {
+        $uid=$_SESSION['user_id'];
+        $sflag=1;
+    }
+    else
+    {
+        $uid=session_id();  
+        $sflag=0;
+    }
+	?>
         <div class="header-navbar header-navbar-white">
             <div class="container-fluid custom-container">
                 <div class="header-wrapper d-flex justify-content-between align-items-center">
@@ -109,7 +120,22 @@
 							{
 								?>
 								<ul class="meta">
-								 <li><a class="cart-toggle" style="color:#fff;" href="login.php"><i class="far fa-user"></i></a></li>
+									<?php
+										if($sflag==1)
+										{
+											?>
+											<span><i style="color:#4cda4c;padding-right: 5px;" class="fa fa-circle" aria-hidden="true"></i><?php echo $_SESSION['user_full_name']; ?></span>
+											<?php
+										}
+										else
+										{
+											?>
+											<li><a class="block-link" href="login.php">
+												<i class="far fa-user"></i>
+											</a></li>
+											<?php
+										}
+									?>
 									<li><a class="cart-toggle" style="color:#fff;" href="javascript:void(0)"><i class="far fa-Shopping-cart"></i><span>1</span></a></li>
 									<li><a class="sidebar-toggle" href="javascript:void(0)"><i class="fal fa-bars"></i></a></li>
 								</ul>
@@ -119,7 +145,22 @@
 							{
 								?>
 								<ul class="meta">
-								 <li><a class="cart-toggle" href="login.php"><i class="far fa-user"></i></a></li>
+									<?php
+										if($sflag==1)
+										{
+											?>
+											<span><i style="color:#4cda4c;padding-right: 5px;" class="fa fa-circle" aria-hidden="true"></i><?php echo $_SESSION['user_full_name']; ?></span>
+											<?php
+										}
+										else
+										{
+											?>
+											<li><a class="block-link" href="login.php">
+												<i class="far fa-user"></i>
+											</a></li>
+											<?php
+										}
+									?>
 									<li><a class="cart-toggle" href="javascript:void(0)"><i class="far fa-Shopping-cart"></i><span>1</span></a></li>
 									<li><a class="sidebar-toggle" href="javascript:void(0)"><i class="fal fa-bars"></i></a></li>
 								</ul>

@@ -107,6 +107,62 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
 
     <link rel="stylesheet" href="assets/css/vendor/plugins.min.css">
     <link rel="stylesheet" href="assets/css/style.min.css"> 
+	<style>
+     .myfa-star
+    {
+        color:#FF912C !important;
+    }    
+        .star-rating .fa-star{color: yellow;}
+	.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.myactive
+{
+	 border: solid 2px #131212;
+	 content: '\f00c'; 
+     font-family: 'FontAwesome', sans-serif; 
+     color: #fff !important;
+}
+.variations .data-val input:checked + span.color::before, .variations .data-val span.color:hover::before, .variations .data-val span.color.active::before {
+    content: '';
+    font-family: 'FontAwesome', sans-serif;
+    color: #fff;
+    }
+
+/* Rating Star Widgets Style */
+.rating-stars ul {
+  list-style-type:none;
+  padding:0;
+  
+  -moz-user-select:none;
+  -webkit-user-select:none;
+}
+.rating-stars ul > li.star {
+  display:inline-block;
+  
+}
+
+/* Idle State of the stars */
+.rating-stars ul > li.star > i.fa {
+  font-size:2.5em; /* Change the size of the stars */
+  color:#ccc; /* Color on idle state */
+}
+
+/* Hover state of the stars */
+.rating-stars ul > li.star.hover > i.fa {
+  color:#FFCC36;
+}
+
+/* Selected state of the stars */
+.rating-stars ul > li.star.selected > i.fa {
+  color:#FF912C;
+}
+
+
+	</style>
     
 </head>
 
@@ -163,11 +219,17 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
                             {"src": "assets/images/product/product-25.jpg", "w": 600, "h": 743},
                             {"src": "assets/images/product/product-26.jpg", "w": 600, "h": 743}
                         ]'><i class="far fa-search-plus"></i></button>
-                        
-						
+                        <?php
+							$sql=$link->rawQueryOne("select * from product where product_alias=?",array($product_alias)); 
+							if($link->count > 0)
+							{	
+							?>
                         <div class="product-simple-preview-image">
-                            <img class="product-zoom" src="assets/images/product/product-37.jpg" alt="">
+                            <img class="product-zoom" src="backyard/images/product_image/<?php echo $cat['product_image']; ?>" alt="">
                         </div>
+						<?php
+							}
+						?>
                         <div id="gallery_01" class="product-simple-thumb-image">
 						<?php
 							$sql=$link->rawQuery("select * from product_gallery pg,product p where p.product_id=pg.product_id and p.product_alias=?",array($product_alias)); 
@@ -178,7 +240,7 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
 									
 							?>
                             <div class="single-product-thumb">
-                                <a class="active" href="#" data-image="assets/images/product/product-37.jpg">
+                                <a href="#" data-image="backyard/images/product_gallery_thumb_image/<?php echo $cat['product_gallery_thumb_image']; ?>">
                                     <img src="backyard/images/product_gallery_thumb_image/<?php echo $cat['product_gallery_thumb_image']; ?>" alt="">
                                 </a>                                
                             </div>
@@ -186,6 +248,21 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
 								}
 							}
 						?>
+                            <!--<div class="single-product-thumb">
+                                <a href="#" data-image="assets/images/product/product-38.jpg">
+                                    <img src="assets/images/product/product-38.jpg" alt="">
+                                </a> 
+                            </div>
+                            <div class="single-product-thumb">
+                                <a href="#" data-image="assets/images/product/product-25.jpg">
+                                    <img src="assets/images/product/product-25.jpg" alt="">
+                                </a> 
+                            </div>
+                            <div class="single-product-thumb">
+                                <a href="#" data-image="assets/images/product/product-26.jpg">
+                                    <img src="assets/images/product/product-26.jpg" alt="">
+                                </a>
+                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -210,7 +287,7 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
                             </ul>
                         </div>
 
-                         <h4 class="title" style="padding-bottom:30px;">Customise your pack of 15 with 3 sizes</h4>
+                         <h4 class="title" style="padding-bottom:30px;">Customise your pack of 15 with 2 sizes</h4>
 						
 						<div class="product-quantity-cart-wishlist-compare flex-wrap" style="border: 1px solid #000;border-bottom: none;">
 						 <form action="#" style="width:100%;">
@@ -222,7 +299,7 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
                                  <div class="product-quantity d-flex">
 								 
                                      <button type="button" class="sub"><i class="fal fa-minus"></i></button>
-                                     <input type="text" value="5" />
+                                     <input type="text" name="heavy_flow" id="heavy_flow" value="8" />
                                      <button type="button" class="add"><i class="fal fa-plus"></i></button>
                                  </div>
                                  </div>
@@ -239,7 +316,7 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
                                  <div class="product-quantity d-flex">
 								 
                                      <button type="button" class="sub"><i class="fal fa-minus"></i></button>
-                                     <input type="text" value="5" />
+                                     <input type="text" name="light_flow" id="light_flow" value="7" />
                                      <button type="button" class="add"><i class="fal fa-plus"></i></button>
                                  </div>
                                  </div>
@@ -310,9 +387,19 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
 
     <section class="product-description-review pt-60 pb-60">
         <div class="container">
+		<?php
+                    $pr=$link->rawQuery("select * from product_review pr,product p where pr.product_id=p.product_id and pr.product_id=?",array($ppid));
+                     $rflag=0;
+                     $review_total=0;
+                     if($link->count != 0)
+                     {
+                           // $pr2=$link->rawQuery("select * from product_review pr,user u,product p where pr.product_id=p.product_id and u.user_id=pr.user_id and pr.product_id=?",array($_GET['pid']));
+                            $review_total=$link->count; 
+                     }
+                    ?>
             <div class="product-simple-tab-menu">
                 <ul class="nav justify-content-center">
-                    <li><a class="active" data-toggle="tab" href="#review">Review (3)</a></li>
+                    <li><a class="active" data-toggle="tab" href="#review">Review (<?php echo $review_total; ?>)</a></li>
                 </ul>
             </div>
             <div class="tab-content pt-30">
@@ -323,88 +410,125 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
                             <div class="product-review pt-20">
                                 <div class="review-comment">
                                     <ul class="comment">
+									<?php
+                                            $pr=$link->rawQuery("select * from product_review pr,user u,product p where pr.product_id=p.product_id and u.user_id=pr.user_id and pr.product_id=? order by pr.product_review_id desc LIMIT 3",array($ppid));
+                                            if($link->count > 0)
+                                            {
+                                                foreach($pr as $pre)
+                                                {
+                                                    ?>
                                         <li>
                                             <div class="single-review-comment">
-                                                <div class="review-author">
-                                                    <img src="assets/images/auhtor-1.jpg" alt="">
-                                                </div>
                                                 <div class="review-content">
-                                                    <p>“Proin bibendum dolor vitae neque ornare, vel mollis est venenatis. Orci varius natoque penatibus et magnis dis parturient montes, nascet”</p>
+                                                    <p>"<?php echo $pre['product_review_message']; ?>"</p>
                                                     <div class="review-name-rating">
-                                                        <h6 class="review-name">Rosie Silva</h6>
-                                                        <ul class="review-rating">
-                                                            <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                            <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                            <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                            <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                            <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                        </ul>
+                                                        <h6 class="review-name"><?php echo $pre['user_full_name']; ?></h6>
+                                                        <div class="rating-stars">
+                                                    <ul id='stars' style="font-size: 8px;">
+                                                    <?php
+                                                        $i=0;
+                                                        for($j=0;$j<5;$j++)
+                                                        {
+                                                            if($i<$pre['product_review_rating'])
+                                                            {
+                                                                ?>
+                                                                <li class="star"><i class="myfa-star fa fa-star"></i style="color:#FF912C;"></li>
+                                                                <?php
+                                                            }
+                                                            else
+                                                            {
+                                                                ?>
+                                                                <li class="star"><i class="myfa-star fa fa-star-o"></i></li>
+                                                                <?php
+                                                            }
+                                                            $i++;
+                                                        }
+                                                    
+                                                    ?>
+                                                    </ul>
+                                                </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </li>
-                                        <li>
-                                            <div class="single-review-comment">
-                                                <div class="review-author">
-                                                    <img src="assets/images/auhtor-2.png" alt="">
-                                                </div>
-                                                <div class="review-content">
-                                                    <p>“Proin bibendum dolor vitae neque ornare, vel mollis est venenatis. Orci varius natoque penatibus et magnis dis parturient montes, nascet”</p>
-                                                    <div class="review-name-rating">
-                                                        <h6 class="review-name">Rosie Silva</h6>
-                                                        <ul class="review-rating">
-                                                            <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                            <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                            <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                            <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                            <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="single-review-comment">
-                                                <div class="review-author">
-                                                    <img src="assets/images/auhtor-3.png" alt="">
-                                                </div>
-                                                <div class="review-content">
-                                                    <p>“Proin bibendum dolor vitae neque ornare, vel mollis est venenatis. Orci varius natoque penatibus et magnis dis parturient montes, nascet”</p>
-                                                    <div class="review-name-rating">
-                                                        <h6 class="review-name">Rosie Silva</h6>
-                                                        <ul class="review-rating">
-                                                            <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                            <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                            <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                            <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                            <li class="rating-on"><i class="fas fa-star"></i></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
+										<?php
+												}
+											}
+											else
+											{
+												?>
+												<p style="width:100%;text-align:center;padding-top: 15px;">No Review Found.</p>
+												<?php
+											}
+											?>
                                     </ul>
                                 </div>
+								<?php
+                                        if($sflag==1)
+                                        {
+                                ?>
                                 <div class="review-form mt-45">
-                                    <h2 class="form-title">Add a review </h2>
+								<?php
+									$us=$link->rawQueryOne("select * from user where user_id=?",array($_SESSION['user_id']));
+									$cr = $link->rawQueryOne("select * from product_review pr,product p where p.product_id=pr.product_id and pr.product_id=? and pr.user_id=?",array($ppid,$_SESSION['user_id']));
+									if($link->count > 0)
+									{
 
-                                    <form action="#">
-                                        <div class="rating-star">
-                                            <a href="javascript:void(0)" class="star-1"></a>
-                                            <a href="javascript:void(0)" class="star-2"></a>
-                                            <a href="javascript:void(0)" class="star-3"></a>
-                                            <a href="javascript:void(0)" class="star-4"></a>
-                                            <a href="javascript:void(0)" class="star-5"></a>
-                                        </div>
-                                        <div class="review-textarea">
+									?>
+									<p style="width:100%;text-align:center;padding-top: 15px;">Already Reviewed.</p>
+									<?php
+									}
+									else
+									{
+									?>
+                                    <h2 class="form-title" style="margin-bottom: 13px;">Add a review </h2>
+
+                                    <form action="#" id="rview" method="post">
+										<input type="hidden" name="uid" value="<?php echo $_SESSION['user_id']; ?>">
+                                        <input type="hidden" name="pid" value="<?php echo $ppid; ?>">
+                                        <div class='rating-stars'>
+										<ul id='stars' style="font-size: 8px;">
+										  <li class='star' title='Poor' data-value='1'>
+											<i class='fa fa-star fa-fw'></i>
+										  </li>
+										  <li class='star' title='Fair' data-value='2'>
+											<i class='fa fa-star fa-fw'></i>
+										  </li>
+										  <li class='star' title='Good' data-value='3'>
+											<i class='fa fa-star fa-fw'></i>
+										  </li>
+										  <li class='star' title='Excellent' data-value='4'>
+											<i class='fa fa-star fa-fw'></i>
+										  </li>
+										  <li class='star' title='WOW!!!' data-value='5'>
+											<i class='fa fa-star fa-fw'></i>
+										  </li>
+										</ul>
+										</div>
+										<input type="hidden" name="product_review_rating" class="rating-value" value="3">
+										<div class="single-form">
+											<label>Name *</label>
+											<input type="text" name="contact_name" id="contact_name" value="<?php echo $us['user_full_name']; ?>" disabled>
+										</div>
+										<div class="single-form">
+											<label>Email *</label>
+											<input type="email" name="contact_email" id="contact_email" value="<?php echo $us['user_email']; ?>" disabled>
+										</div>
+                                        <div class="single-form">
                                             <label>Your Review *</label>
-                                            <textarea></textarea>
+                                            <textarea name="product_review_message" id="product_review_message"></textarea>
                                         </div>
                                         <div class="review-btn">
-                                            <a href="#" class="main-btn">Submit</a>
+                                            <input type="submit" name="submit" value="Submit" class="main-btn">
                                         </div>
                                     </form>
-                                </div>                                
+									<?php
+									}
+									?>
+                                </div>
+								<?php
+										}
+										?>
                             </div>
                         </div>
                     </div>
@@ -623,6 +747,75 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
     <!--====== Google Map js ======-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ5y0EF8dE6qwc03FcbXHJfXr4vEa7z54"></script>
     <script src="assets/js/map-script.js"></script>
+	<script>
+	$("#rview").submit(function(e) {
+		//alert("Hello");
+        $.ajax({
+           type: "POST",
+           url: "insert_review.php",
+           data: $("#rview").serialize(),
+                
+                // serializes the form's elements.
+           success: function(data)
+           {
+                if(data == '')
+                {
+                     location.reload(true); 
+                }
+                else
+                {
+                    $("#rerror").html(data);
+                    $("#rerror").css("color","red");
+                }
+           }
+        });
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+    });
+    $(document).ready(function(){
+  
+  /* 1. Visualizing things on Hover - See next part for action on click */
+  $('#stars li').on('mouseover', function(){
+    var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+   
+    // Now highlight all the stars that's not after the current hovered star
+    $(this).parent().children('li.star').each(function(e){
+      if (e < onStar) {
+        $(this).addClass('hover');
+      }
+      else {
+        $(this).removeClass('hover');
+      }
+    });
+    
+  }).on('mouseout', function(){
+    $(this).parent().children('li.star').each(function(e){
+      $(this).removeClass('hover');
+    });
+  });
+  
+  
+  /* 2. Action to perform on click */
+  $('#stars li').on('click', function(){
+    var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+    var stars = $(this).parent().children('li.star');
+    
+    for (i = 0; i < stars.length; i++) {
+      $(stars[i]).removeClass('selected');
+    }
+    
+    for (i = 0; i < onStar; i++) {
+      $(stars[i]).addClass('selected');
+    }
+    
+    // JUST RESPONSE (Not needed)
+    var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+   //alert(ratingValue);
+    $(".rating-value").val(ratingValue);
+  });
+  
+  
+});
+	</script>
     
 </body>
 
