@@ -104,10 +104,10 @@
     <section class="page-banner bg_cover" style="background-image: url(assets/images/page-banner-4.jpg);">
         <div class="container">
             <div class="page-banner-content text-center">
-                <h2 class="title">Blog Title</h2>
+                <h2 class="title"><?php echo $blog_id; ?></h2>
                 <ol class="breadcrumb justify-content-center">
                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                    <li class="breadcrumb-item active">Blog Title</li>
+                    <li class="breadcrumb-item active"><?php echo $blog_id; ?></li>
                 </ol>
             </div>
         </div>

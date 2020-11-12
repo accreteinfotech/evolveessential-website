@@ -270,14 +270,14 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
                     <div class="product-simple-details mt-50">
                         <h4 class="title"><?php echo $product_alias; ?></h4>
                      
-                        <p class="review">
+                        <!--<p class="review">
                             <i class="fas fa-star review-on"></i>
                             <i class="fas fa-star review-on"></i>
                             <i class="fas fa-star review-on"></i>
                             <i class="fas fa-star review-on"></i>
                             <i class="fas fa-star review-on"></i>
                             <a href="#">(3 customer reviews)</a>
-                        </p>
+                        </p>-->
 						
 						     <div class="product-description" style="padding-bottom:30px;">
                             <p style="text-align:justify;"><?php echo $product_description; ?></p>
@@ -325,7 +325,7 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
                          </div>
 						 
 						  <div class="product-price" style="text-align:center;padding:20px;margin-top:0px;">
-                            <span class="price">INR 249.00</span>
+                            <span class="price">INR 299.00</span>
                         </div>
                      
 
