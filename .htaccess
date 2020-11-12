@@ -42,7 +42,7 @@ RewriteRule ^Login/([a-zA-Z0-9-_]+)/([a-zA-Z0-9-_]+)?$ login.php?pid=$1&pgid=$2
 RewriteRule ^Login/([a-zA-Z0-9-_]+)?$ login.php?cid=$1
 RewriteRule ^Product-Detail/([a-zA-Z0-9-_]+)?$ product-detail.php?pid=$1
 RewriteRule ^Work-Gallery/([a-zA-Z0-9-_]+)?$ work-gallery.php?wid=$1
-RewriteRule ^Blog/([a-zA-Z0-9-_]+)?$ blog-detail.php?bid=$1
+RewriteRule ^Blog/([a-zA-Z0-9-_]+)?$ blog-details.php?bid=$1
 RewriteRule ^Remove-Cart/([a-zA-Z0-9]+)?$ remove_cart.php?cid=$1
 RewriteRule ^Insert-Wishlist/?$ insert_wishlist.php
 RewriteRule ^Remove-Wishlist/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)?$ remove_wishlist.php?cid=$1&pid=$2

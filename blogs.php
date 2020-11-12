@@ -114,93 +114,39 @@
 
     <section class="blog-page site-bg pt-50 pb-100">
         <div class="container">
+            <?php
+                            $blogs=$link->rawQuery("select * from blog where is_active = 1");
+                                if($link->count > 0)
+                                    {
+                                        foreach($blogs as $cat)
+                                        {
+            ?>
             <div class="row">
                 <div class="col-lg-6">
                     <div class="single-blog blog-5 mt-50">
                         <div class="blog-image">
-                            <a href="blog-details.php">
-                                <img src="assets/images/blog/blog-1-4.jpg" alt="blog">
+                            <a href="Blog/<?php echo $cat['blog_alias']; ?>">
+                                <img src="backyard/images/blog_thumb_image/<?php echo $cat['blog_thumb_image']; ?>" alt="<?php echo $cat['blog_name']; ?>">
                                 <i class="fal fa-search-plus"></i>
                             </a>
                         </div>
                         <div class="blog-content text-center">
-                            <h4 class="title"><a href="blog-details.php">Nicholas K Spring 2020 Runway</a></h4>
+                            <h4 class="title"><a href="Blog/<?php echo $cat['blog_alias']; ?>"><?php echo $cat['blog_name']; ?></a></h4>
                             <ul class="blog-meta">
-                                <li><a href="#">By <span> Jon Smith</span></a></li>
-                                <li><a href="#"><i class="fal fa-clock"></i> June 15, 2020</a></li>
+                                <li><a href="Blog/<?php echo $cat['blog_alias']; ?>">By <span><?php echo $cat['blog_writer']; ?></span></a></li>
+                                <li><a href="Blog/<?php echo $cat['blog_alias']; ?>"><i class="fal fa-clock"></i><?php echo $cat['blog_date']; ?></a></li>
                             </ul>
-                            <p>The New Rules of Sweats Nulla luctus dignissim libero, vitae tristique sem mollis sed. Mauris ultricies ullamcorper diam, vel posuere…</p>
+                            <p><?php echo $cat['blog_short_desc'];?></p>
                             
-                            <a href="blog-details.php" class="main-btn">Read More</a>                            
+                            <a href="Blog/<?php echo $cat['blog_alias']; ?>" class="main-btn">Read More</a>                            
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="single-blog blog-5 mt-50">
-                        <div class="blog-image">
-                            <a href="blog-details.php">
-                                <img src="assets/images/blog/blog-1-5.jpg" alt="blog">
-                                <i class="fal fa-search-plus"></i>
-                            </a>
-                        </div>
-                        <div class="blog-content text-center">
-                            <h4 class="title"><a href="blog-details.php">Nicholas K Spring 2020 Runway</a></h4>
-                            <ul class="blog-meta">
-                                <li><a href="#">By <span> Jon Smith</span></a></li>
-                                <li><a href="#"><i class="fal fa-clock"></i> June 15, 2020</a></li>
-                            </ul>
-                            <p>The New Rules of Sweats Nulla luctus dignissim libero, vitae tristique sem mollis sed. Mauris ultricies ullamcorper diam, vel posuere…</p>
-                            
-                            <a href="blog-details.php" class="main-btn">Read More</a>                            
-                        </div>
-                    </div>
-                </div>
-               
-                  <div class="col-lg-6">
-                    <div class="single-blog blog-5 mt-50">
-                        <div class="blog-image">
-                            <a href="blog-details.php">
-                                <img src="assets/images/blog/blog-1-4.jpg" alt="blog">
-                                <i class="fal fa-search-plus"></i>
-                            </a>
-                        </div>
-                        <div class="blog-content text-center">
-                            <h4 class="title"><a href="blog-details.php">Nicholas K Spring 2020 Runway</a></h4>
-                            <ul class="blog-meta">
-                                <li><a href="#">By <span> Jon Smith</span></a></li>
-                                <li><a href="#"><i class="fal fa-clock"></i> June 15, 2020</a></li>
-                            </ul>
-                            <p>The New Rules of Sweats Nulla luctus dignissim libero, vitae tristique sem mollis sed. Mauris ultricies ullamcorper diam, vel posuere…</p>
-                            
-                            <a href="blog-details.php" class="main-btn">Read More</a>                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="single-blog blog-5 mt-50">
-                        <div class="blog-image">
-                            <a href="blog-details.php">
-                                <img src="assets/images/blog/blog-1-5.jpg" alt="blog">
-                                <i class="fal fa-search-plus"></i>
-                            </a>
-                        </div>
-                        <div class="blog-content text-center">
-                            <h4 class="title"><a href="blog-details.php">Nicholas K Spring 2020 Runway</a></h4>
-                            <ul class="blog-meta">
-                                <li><a href="#">By <span> Jon Smith</span></a></li>
-                                <li><a href="#"><i class="fal fa-clock"></i> June 15, 2020</a></li>
-                            </ul>
-                            <p>The New Rules of Sweats Nulla luctus dignissim libero, vitae tristique sem mollis sed. Mauris ultricies ullamcorper diam, vel posuere…</p>
-                            
-                            <a href="blog-details.php" class="main-btn">Read More</a>                            
-                        </div>
-                    </div>
-                </div>
-               
-               
-               
-               
+                </div>               
             </div>
+            <?php
+                    }
+                }
+            ?>
             
         </div>
     </section>

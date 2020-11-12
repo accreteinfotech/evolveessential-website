@@ -8,7 +8,11 @@
     <!--====== Title ======-->
     <?php
     include 'backyard/include/connect.php';
-    $seo=$link->rawQueryone("select * from page_seo where page_seo_url=?",array($page_name));
+    session_start();
+    $blog_id=$_GET['bid'];
+    $sqlb=$link->rawQueryOne("select * from blog where blog_alias LIKE ?",array($blog_id));
+
+   /* $seo=$link->rawQueryone("select * from page_seo where page_seo_url=?",array($page_name));
     if($link->count > 0)
     {
         $page_seo_title=$seo['page_seo_title'];
@@ -19,7 +23,7 @@
         $page_seo_og_title=$seo['page_seo_og_title'];
         $page_seo_og_description=$seo['page_seo_og_description'];
         $page_seo_og_url=$seo['page_seo_og_url'];
-    }
+    }*/
     
 ?>
     <title><?php echo $project_name; ?> | <?php echo $page_seo_title; ?></title>
@@ -119,37 +123,27 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
                         <ul class="blog-meta">
-                            <li><a href="#">By <span> Jon Smith</span></a></li>
-                            <li><a href="#"><i class="fal fa-clock"></i> June 15, 2020</a></li>
+                            <li><a>By <span><?php echo $sqlb['blog_writer'];?></span></a></li>
+                            <li><a><i class="fal fa-clock"></i><?php echo $sqlb['blog_date'];?></a></li>
                         </ul>
-                        <p>Donec laoreet bibendum rutrum. Nulla facilisi. Proin in lacinia dolor. Cras arcu lacus, pulvinar at molestie luctus, blandit at libero. Vivamus semper congue mauris, et lobortis mauris ultrices nec. Nulla et sodales leo. Praesent facilisis elit nec ornare feugiat <br> <br> Donec eu neque blandit, vestibulum felis accumsan, ullamcorper ipsum. Nunc rhoncus, augue interdum sagittis dignissim, nibh tortor sodales ex, pretium maximus libero turpis varius purus. Pellentesque condimentu</p>
+                        <p><?php echo $sqlb['blog_title']; ?></p>
                     </div>
                 </div>
                 <div class="blog-details-image">
                     <div class="row">
                         <div class="col-md-12 image-col">
                             <div class="image">
-                                <img src="assets/images/blog-details/single-1.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-md-6 image-col">
-                            <div class="image">
-                                <img src="assets/images/blog-details/single-2.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-md-6 image-col">
-                            <div class="image">
-                                <img src="assets/images/blog-details/single-3.jpg" alt="">
+                                <img src="backyard/images/blog_big_image/<?php echo $sqlb['blog_big_image']; ?>" alt="<?php echo $sqlb['blog_name'];?>">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
-                        <p>Donec laoreet bibendum rutrum. Nulla facilisi. Proin in lacinia dolor. Cras arcu lacus, pulvinar at molestie luctus, blandit at libero. Vivamus semper congue mauris, et lobortis mauris ultrices nec. Nulla et sodales leo. Praesent facilisis elit nec ornare feugiat <br> <br> Donec eu neque blandit, vestibulum felis accumsan, ullamcorper ipsum. Nunc rhoncus, augue interdum sagittis dignissim, nibh tortor sodales ex, pretium maximus libero turpis varius purus. Pellentesque condimentu</p>
+                        <p><?php echo $sqlb['blog_description'];?></p>
                     </div>
                 </div>
-                <div class="details-wrapper text-left">
+                <!--<div class="details-wrapper text-left">
                     <h2 class="title">The New Rules of Sweats</h2>
                     <p>Nulla luctus dignissim libero, vitae tristique sem mollis sed. Mauris ultricies ullamcorper diam, vel posuere nisl pulvinar id. Mauris varius vulputate nisi, et lacinia dolor viverra sed. Curabitur ultrices, urna ac convallis faucibus, quam purus luctus nibh, ac posuere ante diam eu velit. Cras varius malesuada imperdiet. Aliquam tincidunt eleifend urna nec pulvinar. <br> <br> Aenean iaculis ligula dolor, eu sollicitudin mi ullamcorper ut. Curabitur feugiat, tellus id volutpat euismod, quam ipsum mattis velit, et tincidunt lorem elit nec enim. Quisque mollis consectetur sem eu dapibus. Pellentesque ornare non dui at laoreet. In tempus, est eu ullamcorper tempus, nibh ipsum pellentesque est, ut viverra nunc est et velit. Curabitur tincidunt lorem dui, malesuada rutrum leo elementum eget. Curabitur ultricies at justo sed porttitor.</p>
                 </div>
@@ -197,7 +191,7 @@
                             <p>Pellentesque vel orci a urna blandit varius ut in ipsum. Morbi sed finibus arcu. Maecenas in mi neque. Vestibulum ullamcorper aliquet arcu, id cursus massa volutpat quis. Nullam quis venenatis diam. Sed faucibus massa id tellus finibus, at aliquet erat consequat. Aliquam feugiat ex vitae bibendum pulvinar. Maecenas nec felis et diam congue consectetur congue vel metus. Nam ac eros sagittis massa dictum cursus. Sed nec finibus erat, ac tempor lectus. Aenean sed mattis eros, id sodales magna. Nulla aliquam blandit enim, non pellentesque velit congue vel. Suspendisse vel diam massa. Donec mattis, est quis ultrices egestas, massa eros tempor lacus, in lacinia mi metus nec nisl. Maecenas vitae turpis tempor, vestibulum diam venenatis, finibus tellus.</p>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 
             </div>
         </div>
