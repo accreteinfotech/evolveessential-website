@@ -37,7 +37,6 @@
 								<li class="<?php if ($current_page=="about") {echo "active"; }?>"><a style="color:#fff;" href="About">About us</a></li>
 								<li class="<?php if ($current_page=="product") {echo "active"; }?>"><a style="color:#fff;" href="Product">Products</a></li>
 								<li class="<?php if ($current_page=="how_it_works") {echo "active"; }?>"><a style="color:#fff;" href="how-it-works.php">How It Works</a></li>
-								<li class="<?php if ($current_page=="why_evolve") {echo "active"; }?>"><a style="color:#fff;" href="why-evolve.php">Why Evolve</a></li>
 								<li class="<?php if ($current_page=="blogs") {echo "active"; }?>"><a style="color:#fff;" href="Blogs">Blogs</a></li>
 								<li class="<?php if ($current_page=="contact_us") {echo "active"; }?>"><a style="color:#fff;" href="Contact-us">Contact Us</a></li>
 							   
@@ -52,7 +51,6 @@
 								<li class="<?php if ($current_page=="about") {echo "active"; }?>"><a href="About">About us</a></li>
 								<li class="<?php if ($current_page=="product") {echo "active"; }?>"><a href="Product">Products</a></li>
 								<li class="<?php if ($current_page=="how_it_works") {echo "active"; }?>"><a href="how-it-works.php">How It Works</a></li>
-								<li class="<?php if ($current_page=="why_evolve") {echo "active"; }?>"><a href="why-evolve.php">Why Evolve</a></li>
 								<li class="<?php if ($current_page=="blogs") {echo "active"; }?>"><a href="Blogs">Blogs</a></li>
 								<li class="<?php if ($current_page=="contact_us") {echo "active"; }?>"><a href="contact-us.php">Contact Us</a></li>
 								<?php

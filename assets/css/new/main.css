@@ -7464,7 +7464,7 @@ body.boxed {
 */
 /* dark grey background section - .ds */
 .ds {
-	background-color: #1f2732;
+	background-color: #eeb3a3;
 	color: #9a9a9a;
 }
 
@@ -8474,23 +8474,23 @@ body.boxed {
 
 .response,
 .color-main {
-	border-color: #ff497c;
-	color: #ff497c !important;
+	border-color: #ab9ca1;
+	color: #ab9ca1 !important;
 }
 
 .color-main2 {
-	border-color: #a0ce4e;
-	color: #a0ce4e !important;
+	border-color: #ab9ca1;
+	color: #ab9ca1 !important;
 }
 
 .color-main3 {
-	border-color: #00bea3;
-	color: #00bea3 !important;
+	border-color: #ab9ca1;
+	color: #ab9ca1 !important;
 }
 
 .color-main4 {
-	border-color: #f1894c;
-	color: #f1894c !important;
+	border-color: #ab9ca1;
+	color: #ab9ca1 !important;
 }
 
 .color-dark {
@@ -22320,9 +22320,8 @@ h4.margin {
 }
 
 .process-part .step-center-part img {
-	border: 10px solid rgba(255, 255, 255, 0.1);
-	border-radius: 50%;
-	max-width: 270px;
+	 border-radius: 50%;
+    max-width: 100%;
 }
 
 .process-part .step-title {
@@ -22470,16 +22469,7 @@ h4.margin {
 }
 
 .process-part .step-center-part:after {
-	background-image: url("../../images/right_arrow.png");
-	background-repeat: no-repeat;
-	bottom: -97px;
-	content: "";
-	display: block;
-	height: 136px;
-	position: absolute;
-	right: 55px;
-	width: 34px;
-	z-index: 4;
+	
 }
 
 @media (max-width: 991px) {

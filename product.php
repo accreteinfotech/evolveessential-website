@@ -119,36 +119,37 @@
                   <div class="col-lg-6">
                     <div class="product-simple-image flex-wrap mt-50">
                         <button class="product-gallery-popup" data-hint="Click to enlarge" data-images='[
-                            {"src": "assets/images/product/product-37.jpg", "w": 600, "h": 743},
-                            {"src": "assets/images/product/product-38.jpg", "w": 600, "h": 743},
-                            {"src": "assets/images/product/product-25.jpg", "w": 600, "h": 743},
-                            {"src": "assets/images/product/product-26.jpg", "w": 600, "h": 743}
+                            {"src": "assets/images/product/Infographics-1_4.jpg", "w": 600, "h": 743},
+                            {"src": "assets/images/product/Infographics-1_2.jpg", "w": 600, "h": 743},
+                            {"src": "assets/images/product/Infographics-1_3.jpg", "w": 600, "h": 743},
+                            {"src": "assets/images/product/Infographics-1_1.jpg", "w": 600, "h": 743}
                         ]'><i class="far fa-search-plus"></i></button>
                         
                         <div class="product-simple-preview-image">
-                            <img class="product-zoom" src="assets/images/product/product-37.jpg" alt="">
+                            <img class="product-zoom" src="assets/images/product/Infographics-1_4.jpg" alt="">
                         </div>
                         <div id="gallery_01" class="product-simple-thumb-image">
-                            <div class="single-product-thumb">
-                                <a class="active" href="#" data-image="assets/images/product/product-37.jpg">
-                                    <img src="assets/images/product/product-37.jpg" alt="">
+						 <div class="single-product-thumb">
+                                <a class="active" href="#" data-image="assets/images/product/Infographics-1_2.jpg">
+                                    <img src="assets/images/product/Infographics-1_4.jpg" alt="">
                                 </a>                                
                             </div>
                             <div class="single-product-thumb">
-                                <a href="#" data-image="assets/images/product/product-38.jpg">
-                                    <img src="assets/images/product/product-38.jpg" alt="">
+                                <a class="active" href="#" data-image="assets/images/product/Infographics-1_2.jpg">
+                                    <img src="assets/images/product/Infographics-1_2.jpg" alt="">
+                                </a>                                
+                            </div>
+                            <div class="single-product-thumb">
+                                <a href="#" data-image="assets/images/product/Infographics-1_3.jpg">
+                                    <img src="assets/images/product/Infographics-1_3.jpg" alt="">
                                 </a> 
                             </div>
                             <div class="single-product-thumb">
-                                <a href="#" data-image="assets/images/product/product-25.jpg">
-                                    <img src="assets/images/product/product-25.jpg" alt="">
+                                <a href="#" data-image="assets/images/product/Infographics-1_1.jpg">
+                                    <img src="assets/images/product/Infographics-1_1.jpg" alt="">
                                 </a> 
                             </div>
-                            <div class="single-product-thumb">
-                                <a href="#" data-image="assets/images/product/product-26.jpg">
-                                    <img src="assets/images/product/product-26.jpg" alt="">
-                                </a>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -431,32 +432,32 @@
                                 <div class="quick-view-thumb">
                                     <div class="quick-thumb-active">
                                         <div class="single-quick-thumb">
-                                            <img src="assets/images/product/product-37.jpg" alt="">
+                                            <img src="assets/images/product/Infographics-1_4.jpg" alt="">
                                         </div>
                                         <div class="single-quick-thumb">
-                                            <img src="assets/images/product/product-38.jpg" alt="">
+                                            <img src="assets/images/product/Infographics-1_2.jpg" alt="">
                                         </div>
                                         <div class="single-quick-thumb">
-                                            <img src="assets/images/product/product-27.jpg" alt="">
+                                            <img src="assets/images/product/Infographics-1_3.jpg" alt="">
                                         </div>
                                         <div class="single-quick-thumb">
-                                            <img src="assets/images/product/product-28.jpg" alt="">
+                                            <img src="assets/images/product/Infographics-1_1.jpg" alt="">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="quick-view-preview">
                                     <div class="quick-preview-active">
                                         <div class="single-quick-preview">
-                                            <img src="assets/images/product/product-37.jpg" alt="">
+                                            <img src="assets/images/product/Infographics-1_4.jpg" alt="">
                                         </div>
                                         <div class="single-quick-preview">
-                                            <img src="assets/images/product/product-38.jpg" alt="">
+                                            <img src="assets/images/product/Infographics-1_2.jpg" alt="">
                                         </div>
                                         <div class="single-quick-preview">
-                                            <img src="assets/images/product/product-27.jpg" alt="">
+                                            <img src="assets/images/product/Infographics-1_3.jpg" alt="">
                                         </div>
                                         <div class="single-quick-preview">
-                                            <img src="assets/images/product/product-28.jpg" alt="">
+                                            <img src="assets/images/product/Infographics-1_1.jpg" alt="">
                                         </div>
                                     </div>
                                 </div>                                
