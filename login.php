@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -117,21 +116,43 @@
                         <h4 class="title">Login to Your Account</h4>
 
                         <div class="login-register-form">
-                            <form action="#">
+                            <form method="post" id="loginform">
+                                 <?php
+                                            if(isset($_GET['pid']) && $_GET['pid']!=null)
+                                            {
+                                                ?>
+                                                 <input type="hidden" name="pid" id="pid" value="<?php echo $_GET['pid'];?>">
+                                                <?php
+                                            }
+                                            if(isset($_GET['pgid']) && $_GET['pgid']!=null)
+                                            {
+                                                ?>
+                                                 <input type="hidden" name="pgid" id="pgid" value="<?php echo $_GET['pgid'];?>">
+                                                <?php
+                                            }
+                                            else if(isset($_GET['cid']) && $_GET['cid']!=null)
+                                            {
+                                                ?>
+                                                <input type="hidden" name="cart_id" id="cart_id" value="<?php echo $_GET['cid'];?>">
+                                                <?php
+                                            }
+                                        ?>
                                 <div class="single-form">
                                     <label>Username or email address *</label>
-                                    <input type="email">
+                                    <input type="email" name="username" id="username" value="<?php if(isset($_COOKIE['user'])){ echo $_COOKIE['user']; } ?>">
                                 </div>
                                 <div class="single-form">
                                     <label>Password</label>
-                                    <input type="password">
+                                    <input type="password" name="password" id="password" value="<?php if(isset($_COOKIE['pwd'])){ echo $_COOKIE['pwd']; } ?>">
+                                    <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                 </div>
+                                <p id="rerror"></p>
                                 <div class="single-form">
-                                    <button class="main-btn btn-block">Login</button>
+                                    <input type="submit" class="main-btn btn-block" name="login" value="Log in"></input>
                                 </div>
                                 <div class="single-form d-flex justify-content-between">
                                     <div class="checkbox">
-                                        <input type="checkbox" id="remember">
+                                        <input type="checkbox" name="remember" type="checkbox" id="rememberme" <?php if(isset($_COOKIE['user'])){ echo "checked"; } ?>>
                                         <label for="remember"><span></span> Remember Me</label>
                                     </div>
                                     <div class="forget">
@@ -319,6 +340,56 @@
     <!--====== Google Map js ======-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ5y0EF8dE6qwc03FcbXHJfXr4vEa7z54"></script>
     <script src="assets/js/map-script.js"></script>
+    <script>
+            $(".toggle-password").click(function() {
+
+          $(this).toggleClass("lynessa-Input lynessa-Input--text");
+          var input = $($(this).attr("toggle"));
+          if (input.attr("type") == "password") {
+            input.attr("type", "text");
+          } else {
+            input.attr("type", "password");
+          }
+        });
+        $("#loginform").submit(function(e) {
+        var ppid = $("#pid").val();
+        var pgid = $("#pgid").val();
+        var cid = $("#cid").val();
+        $.ajax({
+             type: "POST",
+           url: "Login-Code",
+           data: $("#loginform").serialize(),
+                
+                // serializes the form's elements.
+           success: function(data)
+           {
+                //alert (data);
+                 if(data == 'success')
+                {
+                    window.location.href='Home';
+                }
+                else if(data == 'success1' || data == '1')
+                {
+                    window.location.href=pgid+"/"+ppid;
+                }
+                else if(data == 'checkout' || data == 'checkoutcheckout')
+                {
+                    window.location.href='Checkout';
+                }
+                else if(data == '')
+                {
+                    window.location.href='Home';
+                }
+                else
+                {
+                    $("#rerror").html(data);
+                    $("#rerror").css("color","red");
+                }
+           }
+        });
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+    });
+    </script>
     
 </body>
 

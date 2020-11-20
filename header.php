@@ -14,7 +14,18 @@
 }
    </style>
    <header class="header-area">
-
+	 <?php
+    if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=null)
+    {
+        $uid=$_SESSION['user_id'];
+        $sflag=1;
+    }
+    else
+    {
+        $uid=session_id();  
+        $sflag=0;
+    }
+	?>
         <div class="header-navbar header-navbar-white">
             <div class="container-fluid custom-container">
                 <div class="header-wrapper d-flex justify-content-between align-items-center">
@@ -35,7 +46,18 @@
                                 <a style="color:#fff;" href="Home">Home</a>
 								</li>
 								<li class="<?php if ($current_page=="about") {echo "active"; }?>"><a style="color:#fff;" href="About">About us</a></li>
-								<li class="<?php if ($current_page=="product") {echo "active"; }?>"><a style="color:#fff;" href="Product">Products</a></li>
+								<?php
+								$sql=$link->rawQuery("select * from product where is_active1 = 1 and product_delete = 0");
+								if($link->count > 0)
+								{
+									foreach($sql as $cat)
+									{
+									?>
+								<li class="<?php if ($current_page=="product") {echo "active"; }?>"><a style="color:#fff;" href="Product/<?php echo $cat['product_alias'] ?>"><?php echo $cat['product_alias'] ?></a></li>
+								<?php
+									}
+								}
+								?>
 								<li class="<?php if ($current_page=="how_it_works") {echo "active"; }?>"><a style="color:#fff;" href="how-it-works.php">How It Works</a></li>
 								<li class="<?php if ($current_page=="blogs") {echo "active"; }?>"><a style="color:#fff;" href="Blogs">Blogs</a></li>
 								<li class="<?php if ($current_page=="contact_us") {echo "active"; }?>"><a style="color:#fff;" href="Contact-us">Contact Us</a></li>
@@ -49,7 +71,18 @@
                                 <a href="Home">Home</a>
 								</li>
 								<li class="<?php if ($current_page=="about") {echo "active"; }?>"><a href="About">About us</a></li>
-								<li class="<?php if ($current_page=="product") {echo "active"; }?>"><a href="Product">Products</a></li>
+								<?php
+								$sql=$link->rawQuery("select * from product where is_active1 = 1 and product_delete = 0");
+								if($link->count > 0)
+								{
+									foreach($sql as $cat)
+									{
+									?>
+								<li class="<?php if ($current_page=="product") {echo "active"; }?>"><a href="Product/<?php echo $cat['product_alias'] ?>"><?php echo $cat['product_alias'] ?></a></li>
+								<?php
+									}
+								}
+								?>
 								<li class="<?php if ($current_page=="how_it_works") {echo "active"; }?>"><a href="how-it-works.php">How It Works</a></li>
 								<li class="<?php if ($current_page=="blogs") {echo "active"; }?>"><a href="Blogs">Blogs</a></li>
 								<li class="<?php if ($current_page=="contact_us") {echo "active"; }?>"><a href="contact-us.php">Contact Us</a></li>
@@ -85,7 +118,22 @@
 							{
 								?>
 								<ul class="meta">
-								 <li><a class="cart-toggle" style="color:#fff;" href="login.php"><i class="far fa-user"></i></a></li>
+									<?php
+										if($sflag==1)
+										{
+											?>
+											<span><i style="color:#4cda4c;padding-right: 5px;" class="fa fa-circle" aria-hidden="true"></i><?php echo $_SESSION['user_full_name']; ?></span>
+											<?php
+										}
+										else
+										{
+											?>
+											<li><a class="block-link" href="login.php">
+												<i class="far fa-user"></i>
+											</a></li>
+											<?php
+										}
+									?>
 									<li><a class="cart-toggle" style="color:#fff;" href="javascript:void(0)"><i class="far fa-Shopping-cart"></i><span>1</span></a></li>
 									<li><a class="sidebar-toggle" href="javascript:void(0)"><i class="fal fa-bars"></i></a></li>
 								</ul>
@@ -95,7 +143,22 @@
 							{
 								?>
 								<ul class="meta">
-								 <li><a class="cart-toggle" href="login.php"><i class="far fa-user"></i></a></li>
+									<?php
+										if($sflag==1)
+										{
+											?>
+											<span><i style="color:#4cda4c;padding-right: 5px;" class="fa fa-circle" aria-hidden="true"></i><?php echo $_SESSION['user_full_name']; ?></span>
+											<?php
+										}
+										else
+										{
+											?>
+											<li><a class="block-link" href="login.php">
+												<i class="far fa-user"></i>
+											</a></li>
+											<?php
+										}
+									?>
 									<li><a class="cart-toggle" href="javascript:void(0)"><i class="far fa-Shopping-cart"></i><span>1</span></a></li>
 									<li><a class="sidebar-toggle" href="javascript:void(0)"><i class="fal fa-bars"></i></a></li>
 								</ul>
