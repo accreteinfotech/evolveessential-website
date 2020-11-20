@@ -288,19 +288,21 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
                         </div>
 
                          <h4 class="title" style="padding-bottom:30px;">Customise your pack of 15 with 2 sizes</h4>
-						
 						<div class="product-quantity-cart-wishlist-compare flex-wrap" style="border: 1px solid #000;border-bottom: none;">
 						 <form action="#" style="width:100%;">
                             <div class="col-lg-12">
 							 <div class="col-lg-8" style="float:left;">
-							<span style="color:#ef7b4c;font-weight:700;">Heavy flow (XL) 320mm</span>
+							<span style="color:#ef7b4c;font-weight:700;">Mediam flow (Large)</span>
 							</div>
 							 <div class="col-lg-4" style="float:right;">
+                                <?php
+
+                                ?>
                                  <div class="product-quantity d-flex">
 								 
-                                     <button type="button" class="sub"><i class="fal fa-minus"></i></button>
-                                     <input type="text" name="heavy_flow" id="heavy_flow" value="8" />
-                                     <button type="button" class="add"><i class="fal fa-plus"></i></button>
+                                     <button id="minus1" type="button" id="decrease" onclick="Decrease(1)" class=""><i class="fal fa-minus" ></i></button>
+                                     <input type="text" name="qty" id="quantity1" value="8" min="0" onchange="qtycheck()" />
+                                     <button id="plus1" type="button" id="increase" onclick="Increase(1);" class=""><i class="fal fa-plus"></i></button>
                                  </div>
                                  </div>
                                </div>
@@ -310,20 +312,23 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
 							  	 <form action="#" style="width:100%;">
 							    <div class="col-lg-12">
 							 <div class="col-lg-8" style="float:left;">
-							<span style="color:#ef7b4c;font-weight:700;">Light flow (Regular) 240mm</span>
+							<span style="color:#ef7b4c;font-weight:700;">Heavy flow (XL)</span>
 							</div>
 							 <div class="col-lg-4" style="float:right;">
                                  <div class="product-quantity d-flex">
 								 
-                                     <button type="button" class="sub"><i class="fal fa-minus"></i></button>
-                                     <input type="text" name="light_flow" id="light_flow" value="7" />
-                                     <button type="button" class="add"><i class="fal fa-plus"></i></button>
+                                     <button id="minus2" type="button" onclick="Decrease(2)"><i class="fal fa-minus"></i></button>
+                                     <input type="text" name="light_flow" id="quantity2" onchange="qtycheck()" min="0" value="7" />
+                                     <button id="plus2" type="button" class="" onclick="Increase(2);"><i class="fal fa-plus"></i></button>
                                  </div>
                                  </div>
                                </div> 
 							</form>
                          </div>
 						 
+                          <div class="product-price" style="text-align:center;padding:20px;margin-top:0px;">
+                            <span class="price" id="count">QTY <span id="total_qty_print">15</span>/15</span>
+                        </div>
 						  <div class="product-price" style="text-align:center;padding:20px;margin-top:0px;">
                             <span class="price">INR 299.00</span>
                         </div>
@@ -331,7 +336,7 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
 
                     
  <div class="product-cart">
-                                     <button class="main-btn" style="width:100%;">Add to Cart</button>
+                                     <button class="main-btn" id="cart" style="width:100%;">Add to Cart</button>
                                  </div>
                     </div>
                 </div>
@@ -748,6 +753,169 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ5y0EF8dE6qwc03FcbXHJfXr4vEa7z54"></script>
     <script src="assets/js/map-script.js"></script>
 	<script>
+    function Increase(id){
+        var y = document.getElementById('quantity'+id).value;//lay gia tri cu trong text
+        var max = parseInt(15);
+            if(y < parseInt(max, 10))
+            {
+                document.getElementById("quantity"+id).value = parseInt(y, 10) +1;// + gia tri lay dc len 1 roi gan kq vao o text
+                var qty1=$("#quantity1").val();
+            var qty2=$("#quantity2").val();
+            var final_qty=parseInt(qty1)+parseInt(qty2);
+           // alert(final_qty);
+           $("#total_qty_print").html(final_qty);
+           if(final_qty ==15)
+           {
+                $("#cart").attr('disabled',false);
+                $("#cart").css('cursor','pointer');  
+                $("#count").css('color','green');
+           }
+           else
+           {
+                $("#cart").attr('disabled',true);
+                $("#count").css('color','red');
+                $("#cart").css('cursor','not-allowed');
+           }
+            if(final_qty >= 15)
+            {
+                $("#plus1").attr('disabled',true);
+                $("#plus2").attr('disabled',true);
+            }
+            else
+            {
+                $("#plus1").attr('disabled',false);
+                $("#plus2").attr('disabled',false);   
+            }
+                }
+            
+            //alert(max);
+    }
+    function Decrease(id){
+        var y = document.getElementById("quantity"+id).value;
+        if(parseInt(y, 10) > 0)
+        {
+        document.getElementById("quantity"+id).value = parseInt(y, 10) -1;
+            var qty1=$("#quantity1").val();
+            var qty2=$("#quantity2").val();
+            var final_qty=parseInt(qty1)+parseInt(qty2);
+           // alert(final_qty);
+           $("#total_qty_print").html(final_qty);
+           if(final_qty ==15)
+           {
+                $("#cart").attr('disabled',false);
+                $("#count").css('color','green');
+                $("#cart").css('cursor','pointer');
+           }
+           else
+           {
+                $("#cart").attr('disabled',true);
+                $("#count").css('color','red');
+                $("#cart").css('cursor','not-allowed');
+           }
+            if(final_qty >= 15)
+            {
+                $("#plus1").attr('disabled',true);
+                $("#plus2").attr('disabled',true);
+            }
+            else
+            {
+                $("#plus1").attr('disabled',false);
+                $("#plus2").attr('disabled',false);   
+            }
+                
+          }  
+        //alert("go");
+    }
+    function qtycheck(){
+         var qty1=$("#quantity1").val();
+        var qty2=$("#quantity2").val();
+        var final_qty=parseInt(qty1)+parseInt(qty2);
+       // alert(final_qty);
+       $("#total_qty_print").html(final_qty);
+       if(final_qty ==15)
+       {
+            $("#cart").attr('disabled',false);
+            $("#count").css('color','green');
+            $("#cart").css('cursor','pointer');
+       }
+       else
+       {
+            $("#cart").attr('disabled',true);
+            $("#count").css('color','red');
+            $("#cart").css('cursor','not-allowed');
+       }
+        if(final_qty >= 15)
+        {
+            $("#plus1").attr('disabled',true);
+            $("#plus2").attr('disabled',true);
+        }
+        else
+        {
+            $("#plus1").attr('disabled',false);
+            $("#plus2").attr('disabled',false);   
+        }
+    }
+
+    $( document ).ready(function(){
+        console.log("ready");
+        $("#plus1").attr('disabled',true);
+        $("#plus2").attr('disabled',true);
+        $("#count").css('color','green');
+    });
+    $(".add").click(function(){
+        var qty1=$("#quantity1").val();
+        var qty2=$("#quantity2").val();
+        var final_qty=parseInt(qty1)+parseInt(qty2)+1;
+       // alert(final_qty);
+       $("#total_qty_print").html(final_qty);
+       if(final_qty ==15)
+       {
+            $("#cart").attr('disabled',false);
+            $("#count").css('color','green');
+       }
+       else
+       {
+            $("#cart").attr('disabled',true);
+            $("#count").css('color','red');
+       }
+        if(final_qty >= 15)
+        {
+            $("#plus1").attr('disabled',true);
+            $("#plus2").attr('disabled',true);
+        }
+        else
+        {
+            $("#plus1").attr('disabled',false);
+            $("#plus2").attr('disabled',false);   
+        }
+    });
+    $(".sub").click(function(){
+        var qty1=$("#quantity1").val();
+        var qty2=$("#quantity2").val();
+        var final_qty=parseInt(qty1)+parseInt(qty2)-1;
+        //alert(final_qty);
+        $("#total_qty_print").html(final_qty);
+        if(final_qty ==15)
+       {
+            $("#cart").attr('disabled',false);
+            $("#count").css('color','green');
+       }
+       else
+       {
+            $("#cart").attr('disabled',true);
+            $("#count").css('color','red');
+       }
+        if(final_qty >= 15)
+        {
+           $("#plus1").attr('disabled',true);
+            $("#plus2").attr('disabled',true);
+        }
+        else
+        {
+            $("#plus1").attr('disabled',false);
+            $("#plus2").attr('disabled',false);      
+        }
+    });
 	$("#rview").submit(function(e) {
 		//alert("Hello");
         $.ajax({

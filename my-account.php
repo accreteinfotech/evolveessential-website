@@ -1,4 +1,6 @@
-
+<?php 
+ob_start();
+?>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -8,6 +10,7 @@
     <!--====== Title ======-->
     <?php
     include 'backyard/include/connect.php';
+    session_start();
     $seo=$link->rawQueryone("select * from page_seo where page_seo_url=?",array($page_name));
     if($link->count > 0)
     {
@@ -128,7 +131,7 @@
                               <a data-toggle="pill" href="#pills-account"><i class="far fa-user"></i>Change Password</a>
                             </li>
                             <li>
-                                <a href="login.php"><i class="far fa-sign-out-alt"></i> Logout</a>
+                                <a href="Logout"><i class="far fa-sign-out-alt"></i> Logout</a>
                             </li>
                           </ul>
                     </div>
@@ -151,39 +154,80 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th class="no">No</th>
-                                                <th class="name">Name</th>
+                                                <th class="no">Order Id</th>
+                                                <th class="name">Order Status</th>
+                                                <th class="name">Show</th>
                                                 <th class="date">Date</th>
-                                                <th class="status">Status</th>
+                                                <th class="addresse">Address</th>
+                                                <th class="pincode">Pincode</th>
+                                                <th class="status">Type</th>
                                                 <th class="total">Total</th>
-                                                <th class="action">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                    <?php
+                                    //$sql=$link->rawQuery("select * from order_product op where op.is_active='1' group by op.order_product_id");
+                                    $sql=$link->rawQuery("select * from order_product op ,status s where s.status_id=op.status_id and op.is_active='1' and op.user_id=? group by op.order_product_id order by op.order_product_id desc",array($_SESSION['user_id']));
+                                    if($link->count > 0)
+                                    {
+                                        foreach($sql as $cat)
+                                        {
+                                ?>
                                             <tr>
-                                                <td>1</td>
-                                                <td>Mostarizing Oil</td>
-                                                <td>Aug 22, 2020</td>
-                                                <td>Pending</td>
-                                                <td>$100</td>
-                                                <td><a href="#">View</a></td>
+                                                <td><?php echo $cat['order_product_id']; ?></td>
+                                                <?php
+                                                    if($cat['status_id']==1)
+                                                    {
+                                                        $flag=1;
+                                                ?>
+                                                <td><a style="background-color:#FF0000;color:#ffffff;"><?php echo $cat['status_name'];?></a></td>
+                                                <?php
+                                                    }
+                                                    else if($cat['status_id']==2)
+                                                    {
+                                                ?>
+                                                <td><a style="background-color:#FF0000;color:#ffffff;"><?php echo $cat['status_name'];?></a></td>
+                                                <?php
+                                                    }
+                                                    else if($cat['status_id']==3)
+                                                    {
+                                                ?>
+                                                <td><a style="background-color:#FF0000;color:#ffffff;"><?php echo $cat['status_name'];?></a></td>
+                                                <?php
+                                                    }
+                                                    else
+                                                    {
+                                                ?>
+                                                <td><a style="background-color:#FF0000;color:#ffffff;"><?php echo $cat['status_name'];?></a></td>
+                                                <?php
+                                                    }
+                                                ?>
+                                                <td><a onclick="showorder(<?php echo $cat['order_product_id']; ?>);" style="cursor:pointer;"><img style="height: 30px;width: 30px;"  src="backyard/img/eye.png"></a></td>
+                                                <td><?php echo date('d M, Y',strtotime($cat['order_date_time'])); ?></td>
+                                                <td><?php echo $cat['order_add1'].$cat['order_add2']; ?></td>
+                                                <td><?php echo $cat['order_pincode']; ?></td>
+                                                <td><?php echo $cat['order_product_type']; ?></td>
+                                                <?php
+                                                    if($cat['order_total']!=0)
+                                                    {
+                                                ?>
+                                                <td><?php echo sprintf("%.2f", $cat['order_total']); ?></td>
+                                                <?php
+                                                    }
+                                                ?>
                                             </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Katopeno Altuni</td>
-                                                <td>July 22, 2020</td>
-                                                <td>Approved</td>
-                                                <td>$45</td>
-                                                <td><a href="#">View</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Murikhete Paris</td>
-                                                <td>June 22, 2020</td>
-                                                <td>On Hold</td>
-                                                <td>$99</td>
-                                                <td><a href="#">View</a></td>
-                                            </tr>
+                                            <?php
+                                                    }
+                                                }
+                                                else
+                                                {
+                                            ?>
+                                                    <tr>
+                                                        <td colspan="8" style="text-align:center;">No Order Found.</td>
+                                                    </tr>
+                                            <?php
+                                                }
+                                            ?>
                                         </tbody>
                                       </table>
                                 </div>
@@ -195,28 +239,33 @@
                                 <h4 class="account-title">Change Password</h4>
 
                                 <div class="account-details">
+                                    <form method="POST" id="changepassword_form">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="single-form">
-                                                <input type="password" placeholder="Current Password">
+                                                <input type="password" name="current_password" id="current_password" placeholder="Current Password">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="single-form">
-                                                <input type="password" placeholder="New Password">
+                                                <input type="password" name="new_password" id="new_password" placeholder="New Password">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="single-form">
-                                                <input type="password" placeholder="Confirm Password">
+                                                <input name="c_password" id="c_password" type="password" placeholder="Confirm Password">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="single-form">
-                                                <button class="main-btn">Save Change</button>
+                                                <input type="submit" class="main-btn" name="save_account_details" value="Save changes">
                                             </div>
+                                        </div>
+                                        <div>
+                                            <p id="err" style="color:red;display:none;">Old Password Invalid.</p>
                                         </div>
                                     </div>
+                                </form>
                                 </div>
                             </div>
                         </div>
@@ -395,6 +444,172 @@
     <!--====== Google Map js ======-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ5y0EF8dE6qwc03FcbXHJfXr4vEa7z54"></script>
     <script src="assets/js/map-script.js"></script>
+
+
+    <script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.validate.js"></script>
+<script src="assets/js/jquery.validate.min.js"></script>
+    <script>
+    //Form Validation
+        $( document ).ready( function () {
+            $( "#changepassword_form" ).validate( {
+                rules: {
+                    
+                    user_full_name: "required",
+                    user_email:
+                    {
+                      required: true,
+                      email: true
+                    },
+                    user_phone:
+                    {
+                      required: true,
+                      digits: true,
+                      minlength: 10,
+                      maxlength: 10
+                    },
+                    current_password: "required",
+                    new_password: "required",
+                    
+                    user_pincode:
+                    {
+                        required: true,
+                        digits: true,
+                        maxlength: 6,
+                        minlength: 6
+                    },
+                    user_add1: "required",
+                    user_add2: "required",
+                    //user_address: "required",
+                    privacy1: "required",
+                    privacy2: 
+                    {
+                      equalTo: "#privacy1"
+                    },
+                    user_password: "required",
+                    c_password:
+                    {
+                      required: true,
+                      equalTo: "#new_password"
+                    },
+                },
+                messages: {
+                    
+                    user_full_name: "Please Enter Full Name *",
+                    user_email:
+                    {
+                      required: "Please Enter E-mail *",
+                      email: "Please Enter Valid E-mail *"
+                    },
+                    user_phone:
+                    {
+                      required: "Please Enter Phone No. *",
+                      digits: "Please Enter Only Digits *",
+                      minlength: "Please Enter Only 10 Digits *",
+                      maxlength: "Please Enter Only 10 Digits *"
+                    },
+                    current_password: "Please Enter Old Password",
+                    new_password: "Please Enter New Password",
+                    user_pincode:{
+                        required: "Please Enter Pincode *",
+                        digits: "Please Enter Only Digits *",
+                        minlength: "Please Enter 6 digits Only *",
+                        maxlength: "Please Enter 6 digits Only *"
+                    }, 
+                    user_add1: "Please Enter Address *",
+                    user_add2: "Please Enter Address *",
+
+                    //user_address: "Please Enter Address *",
+                    privacy1: "Please Accept Privacy Policy *",
+                    privacy2:
+                    {
+                      equalTo: "Please Accept Privacy Policy *"
+                    },
+                    c_password:
+                    {
+                      required: "Please Enter Confirm Password *",
+                      equalTo: "Both Password Not Match*"
+                    },
+                    
+                },
+                 submitHandler: function(form)
+                 {
+                       $.ajax({
+                       type: "POST",
+                       url: "change_password_code.php",
+                       data: $("#changepassword_form").serialize(),
+                            
+                            // serializes the form's elements.
+                       success: function(data)
+                       {
+                           alert(data);
+                            if(data == 'success')
+                            {
+                                $('#myToast').addClass('animated fadeIn');
+                                $("#myToast").css('display','block');
+                                $("#err").css('display','none');
+                                window.location.href='Success/7';
+                                //swal("Booking", "Thank You For Your Appointment Booking","success");
+                                //alert("success");
+                            }
+                            else
+                            {
+                                $("#err").css('display','block');
+                                event.preventDefault();
+                            }
+                       }
+                    });
+                },
+                errorElement: "em",
+                errorPlacement: function ( error, element ) {
+                    // Add the `invalid-feedback` class to the error element
+                    error.addClass( "invalid-feedback" );
+
+                    if ( element.prop( "type" ) === "checkbox" ) {
+                        error.insertAfter( element.next("br") );
+                    } else {
+                        error.insertAfter( element );
+                    }
+                },
+                highlight: function ( element, errorClass, validClass ) {
+                    $( element ).addClass( "is-invalid" ).removeClass( "is-valid" );
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $( element ).addClass( "is-valid" ).removeClass( "is-invalid" );
+                }
+            } );
+
+        } );
+
+        function showorder(val)
+{
+    $.ajax({
+           type: "POST",
+           url: "show_order.php",
+           data: "oid="+val,
+                
+                // serializes the form's elements.
+           success: function(data)
+           {
+               //alert(data);
+                if(data != '')
+                {
+                    $("#vieworder").css("display","none");
+                    $("#showorder").css("display","table");
+                    $("#showorder").html(data);
+                }
+                else
+                {
+                    event.preventDefault();
+                }
+           }
+        });
+}
+$("#tab").click(function(){
+       $("#vieworder").css("display","table");
+       $("#showorder").css("display","none");
+});
+</script>
     
 </body>
 

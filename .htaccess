@@ -11,6 +11,7 @@ RewriteRule ^Blogs/?$ blogs.php
 RewriteRule ^Our-Works/?$ our-works.php
 RewriteRule ^Our-Clients/?$ our-clients.php
 RewriteRule ^Contact-us/?$ contact.php
+RewriteRule ^Success/([a-zA-Z0-9]+)?$ send.php?sid=$1
 RewriteRule ^Privacy-Policy/?$ privacy-policy.php
 RewriteRule ^Terms-And-Condition/?$ terms-and-condition.php
 RewriteRule ^Return-Policy/?$ return-policy.php
