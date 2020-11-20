@@ -136,7 +136,50 @@ ob_start();
 
     <!--====== About Ends ======-->
     <!--====== Brand Logo Ends ======-->
+ <section class="services-page pb-50">
+        <div class="container">
+           
+            <div class="services-wrapper">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="services-image mt-50">
+                            <img src="assets/images/services/services-bg1.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="services-content mt-50">
+                            <p class="subheading">Why choose to Evolve?</p>
+                            <h4 class="name">You are Unique, and this is what constantly keeps us on our toes to provide you with the best! We, along with complete care and quality control ‘Encircle’ your whole personal care experience! </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="services-element pt-70">
+                <div class="row flex-md-row-reverse">
+                    <div class="col-md-6">
+                        <div class="services-element-image mt-50">
+                            <img src="assets/images/services/services-bg2.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="services-element-content mt-50">
+                            <h4 class="title">Nothing that you have tried before!</h4>
+                            <p style="padding-bottom:20px;">A brand that is tailored in India that beats any other potential in terms with feminine comfort and feel. </p>
+                           <ul style="list-style:disc;">
+						   <li>Dry touch surface for easy days and relieving nights</li>
+						   <li>Wider wings and back for a stress-free body movement episode</li>
+						   <li>Minimalist and thin yet high absorbent</li>
+						   <li>Rash free period even with long wearing hours  </li>
+						   </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </section>
     <!--====== Footer Start ======-->
 
     <?php 

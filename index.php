@@ -265,19 +265,9 @@ body .testimonial .row .carousel .carousel-inner .carousel-item .quote-wrapper h
     <!--====== Slider Start ======-->
 
     <section id="sliderParallax" class="slider-area slider-13 slider-active">
-        <div class="single-slider bg_cover d-flex align-items-center paroller" style="background-image: url(assets/images/slider/slider4.jpg);" data-paroller-factor="-0.15" data-paroller-type="foreground" data-paroller-direction="vertical">
-
-              <div class="container">
-                <div class="slider-content-13-1 text-center layer" data-depth="0.2">
-				 <div class="slider-title">
-                        <h4 class="title"><span data-animation="slideInLeft" style="margin-top:70px;padding:0px 25px;font-size:145px;font-style: italic;color: #fff;letter-spacing:0px;" data-delay="1s">EVOLVEMENT</span></h4>   
-                    </div>
-			    </div>
-            </div>
-        </div>
-
         <div class="single-slider bg_cover d-flex align-items-center paroller" style="background-image: url(assets/images/slider/slider2.jpg);" data-paroller-factor="-0.15" data-paroller-type="foreground" data-paroller-direction="vertical">
-             <div class="container">
+
+                 <div class="container">
                 <div class="slider-content-13-1 text-center layer" data-depth="0.2">
 				 <div class="slider-title">
                         <h4 class="title"><span data-animation="slideInLeft" style="margin-top:70px;padding:0px 25px;font-size:145px;font-style: italic;color: #fff;letter-spacing:0px;" data-delay="1s">EVOLUTING</span></h4>   
@@ -287,10 +277,20 @@ body .testimonial .row .carousel .carousel-inner .carousel-item .quote-wrapper h
         </div>
 
         <div class="single-slider bg_cover d-flex align-items-center paroller" style="background-image: url(assets/images/slider/slider7.jpg);" data-paroller-factor="-0.15" data-paroller-type="foreground" data-paroller-direction="vertical">
-          <div class="container">
+             <div class="container">
                 <div class="slider-content-13-1 text-center layer" data-depth="0.2">
 				 <div class="slider-title">
                         <h4 class="title"><span data-animation="slideInLeft" style="margin-top:70px;padding:0px 25px;font-size:145px;font-style: italic;color: #fff;letter-spacing:0px;" data-delay="1s">EVOLVER</span></h4>   
+                    </div>
+			    </div>
+            </div>
+        </div>
+
+        <div class="single-slider bg_cover d-flex align-items-center paroller" style="background-image: url(assets/images/slider/slider4.jpg);" data-paroller-factor="-0.15" data-paroller-type="foreground" data-paroller-direction="vertical">
+          <div class="container">
+                <div class="slider-content-13-1 text-center layer" data-depth="0.2">
+				 <div class="slider-title">
+                        <h4 class="title"><span data-animation="slideInLeft" style="margin-top:70px;padding:0px 25px;font-size:145px;font-style: italic;color: #fff;letter-spacing:0px;" data-delay="1s">EVOLVEMENT</span></h4>   
                     </div>
 			    </div>
             </div>
@@ -317,20 +317,10 @@ body .testimonial .row .carousel .carousel-inner .carousel-item .quote-wrapper h
 	
 	    <!--====== Shop Banner Start ======-->
 
-    <section class="shop-banner-area-6 banner-section-1 d-flex align-items-center bg_cover" style="background-image: url(assets/images/1.jpg);">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="shop-banner-content-6 text-center">
-                        <div class="heading">
-                            <h1 class="title heading-1">Escape the Ordinary</h1>
-                            <p style="padding-top:30px;color:#ffffff;">Better pads for better absorption, and irritation free experience during those humble times of the month</p>
-                        </div>
-                      
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section class="shop-banner-area-6 banner-section-1 d-flex align-items-center bg_cover" style="background-image: url(assets/images/Banner_1.jpg);background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain">
+       
     </section>
 
     <!--====== Shop Banner Ends ======-->
@@ -465,58 +455,90 @@ body .testimonial .row .carousel .carousel-inner .carousel-item .quote-wrapper h
             </div>
         </div>
     </section>-->
+	<!-- eof #canvas -->
+   <section class="features-area pt-60" style="background-color: #f7f7f7;padding-bottom:15px;">
+		<div class="container">
+					<div class="row">
+					<h3 class="title" style="text-align:center;width:100%;">Support The Community</h3><br>
+					<p style="text-align:center;width:100%;padding-top:25px;padding-bottom:25px;">Attain reward points on sharing it with your Menses partner!</p>
+					</div>
+		</div>			
+      <img src="assets/images/collage-female.jpg" style="width:100%"/>
+    </section>
 	<!--Harsh-->
-	<section class="testimonial">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 d-none d-lg-block">
-                    <ol class="carousel-indicators tabs">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
-                            <figure>
-                                <img src="https://livedemo00.template-help.com/wt_62267_v8/prod-20823-one-service/images/testimonials-01-179x179.png" class="img-fluid" alt="">
-                            </figure>
-                        </li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1">
-                            <figure>
-                                <img src="https://livedemo00.template-help.com/wt_62267_v8/prod-20823-one-service/images/testimonials-02-306x306.png" class="img-fluid" alt="">
-                            </figure>
-                        </li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2">
-                            <figure>
-                                <img src="https://livedemo00.template-help.com/wt_62267_v8/prod-20823-one-service/images/testimonials-03-179x179.png" class="img-fluid" alt="">
-                            </figure>
-                        </li>
-                    </ol>
-                </div>
-                <div class="col-lg-6 d-flex justify-content-center align-items-center">
-                    <div id="carouselExampleIndicators" data-interval="false" class="carousel slide" data-ride="carousel">
-                        <h2>WHAT OUR CLIENTS SAY</h2>
-                        <!--<h1>TESTIMONIALS</h1>-->
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="quote-wrapper">
-                                    <p style="font-family: -webkit-pictograph;">I have tried a lot of food delivery services but Plate is something out of this world! Their food is really healthy and it tastes great, which is why I recommend this company to all my friends!</p>
-                                    <h3>- peter lee</h3>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="quote-wrapper">
-                                    <p style="font-family: -webkit-pictograph;">I have tried a lot of food delivery services but Plate is something out of this world! Their food is really healthy and it tastes great, which is why I recommend this company to all my friends!</p>
-                                    <h3>- peter lee</h3>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="quote-wrapper">
-                                    <p style="font-family: -webkit-pictograph;">I have tried a lot of food delivery services but Plate is something out of this world! Their food is really healthy and it tastes great, which is why I recommend this company to all my friends!</p>
-                                    <h3>- peter lee</h3>
-                                </div>
-                            </div>
+	 <section class="testimonial-area-3 bg_cover pt-80 pb-80" style="background-image: url(assets/images/m13-bg-2.jpg);">
+        <div class="container-fluid custom-container">
+            <div class="row testimonial-active-2">
+                <div class="col-lg-4">
+                    <div class="single-testimonial-3">
+                        <div class="testimonial-author">
+                            <img src="assets/images/auhtor-2.png" alt="">
                         </div>
-                        <ol class="carousel-indicators indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        </ol>
+                        <div class="testimonial-content">
+                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut"</p>
+                            <h6 class="author-name">Ida Holloway</h6>
+                            <ul class="rating">
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-testimonial-3">
+                        <div class="testimonial-author">
+                            <img src="assets/images/auhtor-3.png" alt="">
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut"</p>
+                            <h6 class="author-name">Ida Holloway</h6>
+                            <ul class="rating">
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-testimonial-3">
+                        <div class="testimonial-author">
+                            <img src="assets/images/auhtor-4.png" alt="">
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut"</p>
+                            <h6 class="author-name">Ida Holloway</h6>
+                            <ul class="rating">
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-testimonial-3">
+                        <div class="testimonial-author">
+                            <img src="assets/images/auhtor-1.jpg" alt="">
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut"</p>
+                            <h6 class="author-name">Ida Holloway</h6>
+                            <ul class="rating">
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

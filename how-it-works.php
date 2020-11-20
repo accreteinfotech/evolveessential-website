@@ -98,11 +98,8 @@
 <section class="page-banner bg_cover" style="background-image: url(assets/images/page-banner-4.jpg);">
         <div class="container">
             <div class="page-banner-content text-center">
-                <h2 class="title">How It Works</h2>
-                <ol class="breadcrumb justify-content-center">
-                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                    <li class="breadcrumb-item active">How It Works</li>
-                </ol>
+                <h2 class="title">Your Power Is Your Radical Self. Find It</h2>
+               
             </div>
         </div>
     </section>
@@ -117,60 +114,72 @@
 				<div class="container">
 					<div class="divider-65"></div>
 					<div class="row align-items-center c-mb-20 c-mb-lg-60">
-						<div class="col-12 col-lg-4">
+						<div class="col-12 col-lg-6">
 							<div class="step-left-part text-right">
 								<h2 class="step-title">
 									<span class="color-main">01</span>Customise your Pack!</h2>
+									<p class="step-text" style="padding-top:20px;color:#2b2a29;">Select your own segregation of 15 pads for Medium and Heavy flow days! Choose the default pack if unsure and of course, choose to change this configuration before each of your order!</p>
 							</div>
 						</div>
-						<div class="col-12 col-lg-4">
+						<div class="col-12 col-lg-6">
 							<div class="step-center-part text-center">
-								<img src="assets/images/step_img_1.jpg" alt="">
+								<img src="assets/images/c4.gif" alt="">
 							</div>
 						</div>
-						<div class="col-12 col-lg-4">
-							<div class="step-right-part">
-								<p class="step-text">Select your own segregation of pads for your Light, Medium and Heavy flow days! Choose the default pack if unsure and of course, choose to change this configuration before each of your order!</p>
-							</div>
-						</div>
+						
 					</div>
-
-					<div class="row align-items-center right c-mb-20 c-mb-lg-60">
-						<div class="col-12 col-lg-4  order-lg-3">
-							<div class="step-left-part">
-								<h2 class="step-title color1">
-									<span class="color-main2">02</span>Plan your Period!</h2>
-							</div>
-						</div>
-						<div class="col-12 col-lg-4 order-lg-2">
-							<div class="step-center-part text-center">
-								<img src="assets/images/step_img_2.jpg" alt="">
-							</div>
-						</div>
-						<div class="col-12 col-lg-4 order-lg-1 text-right">
-							<div class="step-right-part ">
-								<p class="step-text">A surprise is not always pleasant! Hence, we keep you backed up with your monthly deliveries and expected delivery date for ‘No panic days’ ever!</p>
-							</div>
-						</div>
-					</div>
-
+					
 					<div class="row align-items-center c-mb-20 c-mb-lg-60">
-						<div class="col-12 col-lg-4">
+						
+						<div class="col-12 col-lg-6">
+							<div class="step-center-part text-center">
+								<img src="assets/images/easy-to-carry.jpg" alt="">
+							</div>
+						</div>
+						<div class="col-12 col-lg-6">
+							<div class="step-left-part text-right">
+								<h2 class="step-title">
+									<span class="color-main">02</span>Easy to Carry!</h2>
+									<p class="step-text" style="color:#2b2a29;padding-top:80px;">Easy to use and carry with you. Recommended change is every 6 hours. And, Pull a fresh pad for undisturbed nights!</p>
+							</div>
+						</div>
+						
+						
+					</div>
+
+					
+					<div class="row align-items-center c-mb-20 c-mb-lg-60">
+						<div class="col-12 col-lg-6">
 							<div class="step-left-part text-right part3">
 								<h2 class="step-title">
-									<span class="color-main3">03</span>Purchase Power Pay!</h2>
+									<span class="color-main3">03</span>Clean Disposal! </h2>
+									<p class="step-text" style="padding-top:80px;color:#2b2a29;">Opt for a smart decision with your everyday ‘Evolution’ and Wrap the used pad in the wrapper and dispose off in the trash.</p>
 							</div>
 						</div>
-						<div class="col-12 col-lg-4">
+						<div class="col-12 col-lg-6">
 							<div class="step-center-part text-center last">
-								<img src="assets/images/step_img_3.jpg" alt="">
+								<img src="assets/images/Clean.gif" alt="">
 							</div>
 						</div>
-						<div class="col-12 col-lg-4">
-							<div class="step-right-part">
-								<p class="step-text">A pack of 15 that is a mindful speculation which keeps you prepared for utmost 2 cycles upon each purchase! </p>
+					
+					</div>
+					
+					<div class="row align-items-center c-mb-20 c-mb-lg-60">
+						
+						<div class="col-12 col-lg-6">
+							<div class="step-center-part text-center">
+								<img src="assets/images/Spread.png" alt="">
 							</div>
 						</div>
+						<div class="col-12 col-lg-6">
+							<div class="step-left-part text-right">
+								<h2 class="step-title">
+									<span class="color-main">04</span>Spread The Awareness!</h2>
+									<p class="step-text" style="color:#2b2a29;padding-top:80px;">Your period associate that looks after your health, hygiene and overall wellbeing with planting a new sapling each time you are menstruating or choosing Evolve! </p>
+							</div>
+						</div>
+						
+						
 					</div>
 
 				</div>
@@ -179,61 +188,17 @@
 		<!-- eof #box_wrapper -->
 	</div>
 	</section>
+	
+	 
 	<!-- eof #canvas -->
-    <section class="services-page pt-50 pb-100">
-        <div class="container">
-            <div class="services-element">
-                <div class="row flex-md-row-reverse">
-                    <div class="col-md-6">
-                        <div class="services-element-image mt-50">
-                            <img src="assets/images/services/services-bg2.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="services-element-content mt-50">
-                            <h4 class="title">Directions of use!</h4>
-                           <ul style="list-style:disc;list-style: disc;
-    line-height: 50px;
-    padding-left: 20px;
-    padding-top: 30px;">
-						   <li>Peel off release paper from the back of the pad</li>
-						   <li>Stick the pad on panty and press firmly</li>
-						   <li>Peel off release paper from the wings</li>
-						   <li>Fold the wings around the panty and press firmly</li>
-						   </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-			
-			
-			    <div class="services-element pt-70">
-                <div class="row flex-md-row-reverse">
-                  
-                    <div class="col-md-6">
-                        <div class="services-element-content mt-50" style="max-width: 100%;">
-                            <h4 class="title">How to dispose responsibly!</h4>
-                           <ul style="list-style:disc;list-style: disc;
-    line-height: 50px;
-    padding-left: 20px;
-    padding-top: 30px;">
-						   <li>Change every 6 hours (recommended) </li>
-						   <li>Wrap the used pad in the wrapper and dispose off in the trash</li>
-						   <li>Your BFF that looks after your health, hygiene and overall wellbeing with planting a new plant each time you are menstruating or choosing Evolve! </li>
-						   <li>Risk-free, Stress-free, Happy cycles!</li>
-						   </ul>
-                        </div>
-                    </div>
-					  <div class="col-md-6">
-                        <div class="services-element-image mt-50">
-                            <img src="assets/images/services/services-bg2.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            
-        </div>
+   <section class="features-area pt-60" style="background-color: #f7f7f7;padding-bottom:15px;">
+		<div class="container">
+					<div class="row">
+					<h3 class="title" style="text-align:center;width:100%;">Support The Community</h3><br>
+					<p style="text-align:center;width:100%;padding-top:25px;padding-bottom:25px;">Attain reward points on sharing it with your Menses partner!</p>
+					</div>
+		</div>			
+      <img src="assets/images/collage-female.jpg" style="width:100%"/>
     </section>
 	
 	

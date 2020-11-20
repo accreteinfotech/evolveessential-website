@@ -4941,7 +4941,7 @@ p {
 
 @media only screen and (min-width:1400px) {
 	.slider-13 .single-slider {
-		height: 905px
+		height: 900px
 	}
 }
 
@@ -10783,7 +10783,7 @@ p {
 }
 
 .shop-banner-area-6 {
-	height: 100vh
+	height: 400px;
 }
 
 @media only screen and (min-width:992px) and (max-width:1199px) {
