@@ -91,3 +91,18 @@
             </div>
         </div>
     </footer>
+		<script>
+	function abc1(id)
+	{
+		
+	$.ajax({
+	   url: "remove_cart.php",
+	   data: "cid="+id,
+		// serializes the form's elements.
+	   success: function(data)
+	   {
+		 location.reload(true); 
+	   }
+	});
+	}
+	</script>

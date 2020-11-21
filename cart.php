@@ -1,4 +1,6 @@
-
+<?php
+	ob_start();
+?>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -8,6 +10,7 @@
     <!--====== Title ======-->
     <?php
     include 'backyard/include/connect.php';
+	session_start();
     $seo=$link->rawQueryone("select * from page_seo where page_seo_url=?",array($page_name));
     if($link->count > 0)
     {
@@ -68,7 +71,58 @@
 
     <link rel="stylesheet" href="assets/css/vendor/plugins.min.css">
     <link rel="stylesheet" href="assets/css/style.min.css"> 
+	<style>
+	
+.item-card{
+  transition:0.5s;
+  cursor:pointer;
+}
+.item-card-title{  
+  font-size:15px;
+  transition:1s;
+  cursor:pointer;
+}
+.item-card-title i{  
+  font-size:15px;
+  transition:1s;
+  cursor:pointer;
+  color:#ffa710
+}
+.card-title i:hover{
+  transform: scale(1.25) rotate(100deg); 
+  color:#18d4ca;
+  
+}
+.card:hover{
+  transform: scale(1.05);
+  box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+}
+.card-text{
+  height:80px;  
+}
 
+.card::before, .card::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: scale3d(0, 0, 1);
+  transition: transform .3s ease-out 0s;
+  background: rgba(255, 255, 255, 0.1);
+  content: '';
+  pointer-events: none;
+}
+.card::before {
+  transform-origin: left top;
+}
+.card::after {
+  transform-origin: right bottom;
+}
+.card:hover::before, .card:hover::after, .card:focus::before, .card:focus::after {
+  transform: scale3d(1, 1, 1);
+}
+	</style>
 </head>
 
 <body>
@@ -111,209 +165,155 @@
 
     <section class="cart-page pt-80 pb-80">
         <div class="container">
+		  <div class="row">
+            <div class="col-lg-<?php
+				if($total_flag != 0)
+				{
+					echo "7";
+				}
+				else
+				{
+					echo "12";
+				}
+					?>">
+			<!--<div class="card item-card card-block" style="border: 0px">-->
             <div class="cart-table table-responsive">
+			
                 <table class="table">
+				<form method="post" action="insert_order_item.php" name="cart_form" id="cart_form">  
                     <thead style="background-color:#ef7b4c;">
                         <tr>
                             <th class="delete" style="color:#fff;"></th>
-                            <th class="product" style="color:#fff;">Product</th>
-                            <th class="price" style="color:#fff;">Price</th>
-                            <th class="quantity" style="color:#fff;">Quantity</th>
-                            <th class="Total" style="color:#fff;">Total</th>
+                            <th class="product" style="color:#fff;">Product Details</th>
+                            <th class="" style="color:#fff;"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="delete">
-                                <a class="product-delete" href="#"><i class="far fa-trash-alt"></i></a>
-                            </td>
-                            <td class="product">
-                                <div class="cart-product">
-                                    <div class="product-image">
-                                        <img src="assets/images/product/product-37.jpg" alt="">
-                                    </div>
-                                    <div class="product-content">
-                                        <h5 class="title"><a href="product.php">Sanitary Pad</a></h5>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="price">
-                                <p class="cart-price">INR 249.00</p>
-                            </td>
-                            <td class="quantity">
-                                <div class="product-quantity d-inline-flex">
-                                    <button type="button" class="sub"><i class="fal fa-minus"></i></button>
-                                    <input type="text" value="1" />
-                                    <button type="button" class="add"><i class="fal fa-plus"></i></button>
-                                </div>
-                            </td>
-                            <td class="Total">
-                                <p class="cart-price">INR 249.00</p>
-                            </td>
-                        </tr>
-                        
-                       
-                       
+					<?php
+						$cart_item=$link->rawQuery("select * from product p,cart c where c.product_id=p.product_id and c.order_id=0");
+						if($link->count > 0)
+						{
+							$product_org_price=0;
+							foreach($cart_item as $cart1)
+							{
+								$product_org_price=$product_org_price+$cart1['product_price'];
+								?>
+								<!-- Hidden Values -->
+									<input type="hidden" name="cart_id[]" value="<?php echo $cart1['cart_id'] ;?>">
+									<input type="hidden" name="product_id[]" value="<?php echo $cart1['product_id']; ?>">
+									<input type="hidden" name="price[]" value="<?php echo $cart1['price']; ?>">
+									<input type="hidden" name="light_flow[]" value="<?php echo $cart1['light_flow']; ?>">
+									<input type="hidden" name="heavy_flow[]" value="<?php echo $cart1['heavy_flow']; ?>">
+								<!-- Hidden Values -->
+								<tr>
+									<td class="delete">
+										<a class="product-delete" onClick="abc1(<?php echo $cart1['cart_id']; ?>);" style="cursor:pointer;"><i class="far fa-trash-alt"></i></a>
+									</td>
+									<td class="product">
+										<div class="cart-product">
+											<div class="product-image">
+												<img src="backyard/images/product_image/<?php echo $cart1['product_image']; ?>" alt="<?php echo $cart1['product_name']; ?>">
+											</div>
+											<div class="product-content">
+												<h5 class="title"><a href="Product/<?php echo $cart1['product_alias']; ?>"><?php echo $cart1['product_name']; ?></a></h5>
+												<p class="cart-price" style="font-size:12px;"><?php echo $cart1['light_flow']; ?> Mediam, <?php echo $cart1['heavy_flow']; ?> High</p>
+											</div>
+										</div>
+									</td>
+									<td class="product">
+										<span class="price"><span>INR <?php echo sprintf("%.2f", $cart1['product_price']); ?></span></span>
+									</td>
+								</tr>
+								<?php
+							}
+						}
+						else
+						{
+							?>
+							<tr>
+							<td colspan="3"><p style="text-align:center;padding: 20px 0px" class="product-price">No Product Found</p></td>
+							</tr>
+							<?php
+						}
+					?>
                     </tbody>
                 </table>
+				
+				</div>
+            <!--</div>-->
+			
+            </div>
+			<?php
+				if($total_flag != 0)
+				{
+					?>
+					<div class="col-lg-5">
+							  <div class="card item-card card-block mt-10" style="transform: scale(1.05);box-shadow: 5px 5px 7px rgba(0,0,0,0.2);">
+							  <div class="cart-title" style="padding:15px">
+									<h3 class="title" style="text-align:center;font-weight:500">Billing Details</h3>
+								</div>
+							 <div class="cart-total-table">
+									<table class="table">
+										<tbody>
+											<tr>
+												<td>
+													<p class="value">Subtotal</p>
+												</td>
+												<?php
+													if($cart_count > 1)
+													{
+														?>
+														<td>
+															<p class="price" style="text-align:right;"><del>INR <?php echo sprintf("%.2f", $product_org_price) ; ?></del> INR <?php echo sprintf("%.2f",$total) ; ?></p>
+														</td>
+														<?php
+													}
+													else
+													{
+														?>
+														<td>
+															<p class="price" style="text-align:right;">INR <?php echo sprintf("%.2f",$total) ; ?></p>
+														</td>
+														<?php
+													}
+												?>
+											   
+											</tr>
+											
+											 <tr>
+												<td>
+													<p class="value" style="color:#40c13e">Delivery Fee</p>
+												</td>
+												<td>
+													<p class="price" style="text-align:right;color:#40c13e">FREE</p>
+												</td>
+											</tr>
+											
+											<tr>
+												<td>
+													<p class="value" style="color:#333">Total to be Paid</p>
+												</td>
+												<td>
+													<p class="price" style="text-align:right;color:#333" id="tot2"><?php echo "INR ".sprintf("%.2f",$grand_total) ; ?></p>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div> 
+								<div class="cart-total-btn mt-20">
+									<input type="submit" style="color:#white;" class="main-btn btn-block" value="Proceed To Checkout">
+								</div>
+						  </div>
+						  </form>
+					</div>
+			<?php
+				}
+			?>			
             </div>
             <div class="cart-btn">
                 <div class="cart-btn-left">
-                    <a href="#" class="main-btn">Continue Shopping</a>
-                </div>
-                <div class="cart-btn-right">
-                    <a href="#" class="main-btn main-btn-2">Clear Cart</a>
-                    <a href="#" class="main-btn main-btn-2">Update Cart</a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-5">
-                    <div class="cart-shipping mt-50">
-                        <div class="cart-title">
-                            <h4 class="title">Calculate Shipping</h4>
-                            <p>Estimate your shipping fee *</p>
-                        </div>
-                        <div class="cart-form mt-25">
-                            <p>Calculate shipping</p>
-                            <form action="#">
-                                <div class="single-select2">
-                                    <div class="form-select2">
-                                        <select class="select2">
-                                            <option value="0">Select a country…</option>
-                                            <option value="1">Bangladesh</option>
-                                            <option value="2">Canada</option>
-                                            <option value="3">Colombia</option>
-                                            <option value="4">Indonesia</option>
-                                            <option value="5">Italy</option>
-                                            <option value="6">Pakistan</option>
-                                            <option value="7">Turkey</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="single-select2">
-                                    <div class="form-select2">
-                                        <select class="select2">
-                                            <option value="">Select an option…</option>
-                                            <option value="BAG">Bagerhat</option>
-                                            <option value="BAN">Bandarban</option>
-                                            <option value="BAR">Barguna</option>
-                                            <option value="BARI">Barisal</option>
-                                            <option value="BHO">Bhola</option>
-                                            <option value="BOG">Bogra</option>
-                                            <option value="BRA">Brahmanbaria</option>
-                                            <option value="CHA">Chandpur</option>
-                                            <option value="CHI">Chittagong</option>
-                                            <option value="CHU">Chuadanga</option>
-                                            <option value="COM">Comilla</option>
-                                            <option value="COX">Cox's Bazar</option>
-                                            <option value="DHA">Dhaka</option>
-                                            <option value="DIN">Dinajpur</option>
-                                            <option value="FAR">Faridpur </option>
-                                            <option value="FEN">Feni</option>
-                                            <option value="GAI">Gaibandha</option>
-                                            <option value="GAZI">Gazipur</option>
-                                            <option value="GOP">Gopalganj</option>
-                                            <option value="HAB">Habiganj</option>
-                                            <option value="JAM">Jamalpur</option>
-                                            <option value="JES">Jessore</option>
-                                            <option value="JHA">Jhalokati</option>
-                                            <option value="JHE">Jhenaidah</option>
-                                            <option value="JOY">Joypurhat</option>
-                                            <option value="KHA">Khagrachhari</option>
-                                            <option value="KHU">Khulna</option>
-                                            <option value="KIS">Kishoreganj</option>
-                                            <option value="KUR">Kurigram</option>
-                                            <option value="KUS">Kushtia</option>
-                                            <option value="LAK">Lakshmipur</option>
-                                            <option value="LAL">Lalmonirhat</option>
-                                            <option value="MAD">Madaripur</option>
-                                            <option value="MAG">Magura</option>
-                                            <option value="MAN">Manikganj </option>
-                                            <option value="MEH">Meherpur</option>
-                                            <option value="MOU">Moulvibazar</option>
-                                            <option value="MUN">Munshiganj</option>
-                                            <option value="MYM">Mymensingh</option>
-                                            <option value="NAO">Naogaon</option>
-                                            <option value="NAR">Narail</option>
-                                            <option value="NARG">Narayanganj</option>
-                                            <option value="NARD">Narsingdi</option>
-                                            <option value="NAT">Natore</option>
-                                            <option value="NAW">Nawabganj</option>
-                                            <option value="NET">Netrakona</option>
-                                            <option value="NIL">Nilphamari</option>
-                                            <option value="NOA">Noakhali</option>
-                                            <option value="PAB">Pabna</option>
-                                            <option value="PAN">Panchagarh</option>
-                                            <option value="PAT">Patuakhali</option>
-                                            <option value="PIR">Pirojpur</option>
-                                            <option value="RAJB">Rajbari</option>
-                                            <option value="RAJ">Rajshahi</option>
-                                            <option value="RAN">Rangamati</option>
-                                            <option value="RANP">Rangpur</option>
-                                            <option value="SAT">Satkhira</option>
-                                            <option value="SHA">Shariatpur</option>
-                                            <option value="SHE">Sherpur</option>
-                                            <option value="SIR">Sirajganj</option>
-                                            <option value="SUN">Sunamganj</option>
-                                            <option value="SYL">Sylhet</option>
-                                            <option value="TAN">Tangail</option>
-                                            <option value="THA">Thakurgaon</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="single-form">
-                                    <input type="text" placeholder="Postcode/ziip">
-                                </div>
-                                <div class="cart-form-btn">
-                                    <button class="btn-cart">Updatetotals</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-				</div>
-                <div class="col-lg-5">
-                    <div class="cart-totals mt-45">
-                        <div class="cart-title">
-                            <h4 class="title">Cart totals</h4>
-                        </div>
-                        <div class="cart-total-table mt-25">
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <p class="value">Subtotal</p>
-                                        </td>
-                                        <td>
-                                            <p class="price">INR 249.00</p>
-                                        </td>
-                                    </tr>
-									
-									 <tr>
-                                        <td>
-                                            <p class="value">Shipping</p>
-                                        </td>
-                                        <td>
-                                            <p class="price" style="text-align:right;">INR 11.00</p>
-                                        </td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td>
-                                            <p class="value">Total</p>
-                                        </td>
-                                        <td>
-                                            <p class="price">INR 260.00</p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="cart-total-btn mt-20">
-                            <a href="checkout.php" class="main-btn btn-block">Proceed To Checkout</a>
-                        </div>
-                    </div>
+                    <!--<a href="#" class="main-btn">Continue Shopping</a>
+                    <a href="#" class="main-btn">Clear Cart</a>-->
                 </div>
             </div>
         </div>

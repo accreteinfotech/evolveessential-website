@@ -45,29 +45,12 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
     <meta charset="utf-8">
     
     <!--====== Title ======-->
-    <?php
-    //include 'backyard/include/connect.php';
-    $seo=$link->rawQueryone("select * from page_seo where page_seo_url=?",array($page_name));
-    if($link->count > 0)
-    {
-        $page_seo_title=$seo['page_seo_title'];
-        $page_seo_description=$seo['page_seo_description'];
-        $page_seo_keywords=$seo['page_seo_keywords'];
-        $page_seo_author=$seo['page_seo_author'];
-        
-        $page_seo_og_title=$seo['page_seo_og_title'];
-        $page_seo_og_description=$seo['page_seo_og_description'];
-        $page_seo_og_url=$seo['page_seo_og_url'];
-    }
+    <title><?php echo $project_name; ?> | <?php echo $seo_title; ?></title>
+    <meta name="description" content="<?php echo $seo_meta_description; ?>">
+    <meta name="keywords" content="<?php echo $seo_keywords; ?>" >
     
-?>
-    <title><?php echo $project_name; ?> | <?php echo $page_seo_title; ?></title>
-    <meta name="description" content="<?php echo $page_seo_description; ?>">
-    <meta name="keywords" content="<?php echo $page_seo_keywords; ?>" >
-    
-    <meta property="og:title" content="<?php echo $project_name; ?> | <?php echo $page_seo_og_title; ?>" />
-    <meta property="og:url" content="<?php echo $page_seo_og_url; ?>" />
-    <meta property="og:description" content="<?php echo $page_seo_og_description; ?>">
+    <meta property="og:title" content="<?php echo $product_og_title; ?>" />
+    <meta property="og:description" content="<?php echo $product_og_description; ?>">
     <base href="<?php echo $site_url; ?>">
     <?php
         include 'head_code.php';
@@ -160,8 +143,37 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
 .rating-stars ul > li.star.selected > i.fa {
   color:#FF912C;
 }
-
-
+.myminus
+{
+	width: 25px;
+    height: 25px;
+    padding: 0;
+    border: 0;
+    font-size: 14px;
+    background: 0 0;
+    color: #232324;
+}
+.myplus
+{
+	width: 25px;
+    height: 25px;
+    padding: 0;
+    border: 0;
+    font-size: 14px;
+    background: 0 0;
+    color: #232324;
+}
+.myqty
+{
+	 width: 30px;
+    height: 25px;
+    border: 0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    background: 0 0;
+    color: #232324;
+}
 	</style>
     
 </head>
@@ -213,21 +225,18 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
             <div class="row">
                   <div class="col-lg-6">
                     <div class="product-simple-image flex-wrap mt-50">
-                        <button class="product-gallery-popup" data-hint="Click to enlarge" data-images='[
-                            {"src": "assets/images/product/product-37.jpg", "w": 600, "h": 743},
-                            {"src": "assets/images/product/product-38.jpg", "w": 600, "h": 743},
-                            {"src": "assets/images/product/product-25.jpg", "w": 600, "h": 743},
-                            {"src": "assets/images/product/product-26.jpg", "w": 600, "h": 743}
-                        ]'><i class="far fa-search-plus"></i></button>
+                      
                         <?php
-							$sql=$link->rawQueryOne("select * from product where product_alias=?",array($product_alias)); 
+							$cat2=$link->rawQueryOne("select * from product_gallery pg,product p where p.product_id=pg.product_id and p.product_alias=?",array($product_alias)); 
 							if($link->count > 0)
 							{	
+								
 							?>
                         <div class="product-simple-preview-image">
-                            <img class="product-zoom" src="backyard/images/product_image/<?php echo $cat['product_image']; ?>" alt="">
+                            <img class="product-zoom" src="backyard/images/product_gallery_thumb_image/<?php echo $cat2['product_gallery_thumb_image']; ?>" alt="">
                         </div>
 						<?php
+										
 							}
 						?>
                         <div id="gallery_01" class="product-simple-thumb-image">
@@ -282,14 +291,15 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
 						     <div class="product-description" style="padding-bottom:30px;">
                             <p style="text-align:justify;"><?php echo $product_description; ?></p>
 
-                            <ul class="description-list">
-                                <li><?php echo $additional_information; ?></li>
-                            </ul>
                         </div>
 
                          <h4 class="title" style="padding-bottom:30px;">Customise your pack of 15 with 2 sizes</h4>
 						<div class="product-quantity-cart-wishlist-compare flex-wrap" style="border: 1px solid #000;border-bottom: none;">
-						 <form action="#" style="width:100%;">
+						 <form action="insert_cart.php" style="width:100%;" method="post">
+							<!-- Hidden -->
+							<input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
+							<input type="hidden" name="price" value="<?php echo sprintf("%.2f",$product_price); ?>">
+							<!-- End Hidden -->
                             <div class="col-lg-12">
 							 <div class="col-lg-8" style="float:left;">
 							<span style="color:#ef7b4c;font-weight:700;">Mediam flow (Large)</span>
@@ -301,43 +311,40 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
                                  <div class="product-quantity d-flex">
 								 
                                      <button id="minus1" type="button" id="decrease" onclick="Decrease(1)" class=""><i class="fal fa-minus" ></i></button>
-                                     <input type="text" name="qty" id="quantity1" value="8" min="0" onchange="qtycheck()" />
+                                     <input type="text" name="light_flow" id="quantity1" value="8" min="0" onchange="qtycheck()" />
                                      <button id="plus1" type="button" id="increase" onclick="Increase(1);" class=""><i class="fal fa-plus"></i></button>
                                  </div>
                                  </div>
                                </div>
-						   </form>
+						   
 							</div>
 						<div class="product-quantity-cart-wishlist-compare flex-wrap" style="border: 1px solid #000;">							 
-							  	 <form action="#" style="width:100%;">
-							    <div class="col-lg-12">
+							  	<div class="col-lg-12">
 							 <div class="col-lg-8" style="float:left;">
 							<span style="color:#ef7b4c;font-weight:700;">Heavy flow (XL)</span>
 							</div>
 							 <div class="col-lg-4" style="float:right;">
                                  <div class="product-quantity d-flex">
-								 
-                                     <button id="minus2" type="button" onclick="Decrease(2)"><i class="fal fa-minus"></i></button>
-                                     <input type="text" name="light_flow" id="quantity2" onchange="qtycheck()" min="0" value="7" />
-                                     <button id="plus2" type="button" class="" onclick="Increase(2);"><i class="fal fa-plus"></i></button>
+								 <!-- qty2 -->
+                                     <button id="minus2" type="button" onclick="Decrease(2)" class="myminus"><i class="fal fa-minus"></i></button>
+                                     <input type="text" name="heavy_flow" id="quantity2" onchange="qtycheck()" class="myqty" min="0" value="7" />
+                                     <button id="plus2" type="button" onclick="Increase(2);" class="myplus"><i class="fal fa-plus"></i></button>
                                  </div>
                                  </div>
                                </div> 
-							</form>
+							
                          </div>
 						 
                           <div class="product-price" style="text-align:center;padding:20px;margin-top:0px;">
                             <span class="price" id="count">QTY <span id="total_qty_print">15</span>/15</span>
                         </div>
 						  <div class="product-price" style="text-align:center;padding:20px;margin-top:0px;">
-                            <span class="price">INR 299.00</span>
+                            <span class="price">INR <?php echo sprintf("%.2f",$product_price); ?></span>
                         </div>
-                     
-
-                    
- <div class="product-cart">
-                                     <button class="main-btn" id="cart" style="width:100%;">Add to Cart</button>
-                                 </div>
+                     <div class="product-cart">
+						 <input type="submit" class="main-btn" id="cart" style="width:100%;" value="Add to Cart">
+					 </div>
+					 </form>
                     </div>
                 </div>
             </div>
@@ -425,7 +432,7 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
                                         <li>
                                             <div class="single-review-comment">
                                                 <div class="review-content">
-                                                    <p>"<?php echo $pre['product_review_message']; ?>"</p>
+                                                    <p><?php echo $pre['product_review_message']; ?></p>
                                                     <div class="review-name-rating">
                                                         <h6 class="review-name"><?php echo $pre['user_full_name']; ?></h6>
                                                         <div class="rating-stars">
@@ -573,74 +580,43 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
                             <div class="quick-view-image">
                                 <div class="quick-view-thumb">
                                     <div class="quick-thumb-active">
-                                        <div class="single-quick-thumb">
-                                            <img src="assets/images/product/product-37.jpg" alt="">
-                                        </div>
-                                        <div class="single-quick-thumb">
-                                            <img src="assets/images/product/product-38.jpg" alt="">
-                                        </div>
-                                        <div class="single-quick-thumb">
-                                            <img src="assets/images/product/product-27.jpg" alt="">
-                                        </div>
-                                        <div class="single-quick-thumb">
-                                            <img src="assets/images/product/product-28.jpg" alt="">
-                                        </div>
+									<?php
+										$sql=$link->rawQuery("select * from product_gallery pg,product p where p.product_id=pg.product_id and p.product_alias=?",array($product_alias)); 
+										if($sql)
+										{
+											foreach($sql as $cat)
+											{
+										?>
+										   <div class="single-quick-thumb">
+												<img src="backyard/images/product_gallery_thumb_image/<?php echo $cat['product_gallery_thumb_image']; ?>" alt="">
+										   </div>
+										<?php
+											}
+										}
+									?>
                                     </div>
                                 </div>
                                 <div class="quick-view-preview">
                                     <div class="quick-preview-active">
-                                        <div class="single-quick-preview">
-                                            <img src="assets/images/product/product-37.jpg" alt="">
+									<?php
+										$sql=$link->rawQuery("select * from product_gallery pg,product p where p.product_id=pg.product_id and p.product_alias=?",array($product_alias)); 
+										if($sql)
+										{
+											foreach($sql as $cat)
+											{
+										?>
+										<div class="single-quick-preview">
+                                            <img src="backyard/images/product_gallery_thumb_image/<?php echo $cat['product_gallery_thumb_image']; ?>" alt="">
                                         </div>
-                                        <div class="single-quick-preview">
-                                            <img src="assets/images/product/product-38.jpg" alt="">
-                                        </div>
-                                        <div class="single-quick-preview">
-                                            <img src="assets/images/product/product-27.jpg" alt="">
-                                        </div>
-                                        <div class="single-quick-preview">
-                                            <img src="assets/images/product/product-28.jpg" alt="">
-                                        </div>
+										<?php
+											}
+										}
+									?>
                                     </div>
                                 </div>                                
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="quick-view-content">
-                                <h4 class="title">Oversized Check Dress</h4>
-                                <span class="sku-id">REF. 1104693 - TOMY</span>
-
-                                <div class="quick-price">
-                                    <span class="regular-price">£250.00</span>
-                                    <span class="sale-price">£200.00</span>
-                                </div>
-                                <div class="quick-quantity-cart-wishlist-compare flex-wrap">
-                                   <form action="#">
-                                        <div class="quick-quantity d-flex">
-                                            <button type="button" class="sub"><i class="fal fa-minus"></i></button>
-                                            <input type="text" value="1" />
-                                            <button type="button" class="add"><i class="fal fa-plus"></i></button>
-                                        </div>
-                                        <div class="quick-cart">
-                                            <button class="main-btn">Add to Cart</button>
-                                        </div>
-                                   </form>
-                                   <a href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" class="quick-wishlist"><i class="fal fa-heart"></i></a>
-                                   <a href="#" data-tooltip="tooltip" data-placement="top" title="Add to Compare" class="quick-compare"><i class="fal fa-repeat-alt"></i></a>
-                                </div>
-                                <div class="quick-description">
-                                    <p>Sed vitae eros a quam malesuada porttitor nec nec orci. Ut lacus augue, bibendum at tristique at, ornare eget quam. Donec volutpat ut nibh id sagittis. Morbi fringilla ac libero in consequat.</p>
-                                </div>
-                                <div class="quick-share">
-                                    <ul class="social">
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -658,9 +634,20 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
         <div class="pswp__scroll-wrap">
             
             <div class="pswp__container">
-                <div class="pswp__item"></div>
-                <div class="pswp__item"></div>
-                <div class="pswp__item"></div>
+			<?php
+				$sql=$link->rawQuery("select * from product_gallery pg,product p where p.product_id=pg.product_id and p.product_alias=?",array($product_alias)); 
+				if($sql)
+				{
+					foreach($sql as $cat)
+					{
+				?>
+				<div class="pswp__item">
+				
+				</div>
+				<?php
+					}
+				}
+			?>
             </div>
 
             <div class="pswp__ui pswp__ui--hidden">
@@ -984,7 +971,7 @@ $sql=$link->rawQueryOne("select * from product p where p.product_alias LIKE '$pi
   
 });
 	</script>
-    
+
 </body>
 
 </html>

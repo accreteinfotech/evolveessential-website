@@ -1,9 +1,16 @@
-
+<?php
+	ob_start();
+?>
+<?php
+	include 'backyard/include/connect.php';
+	session_start();
+?>	
 <!doctype html>
 <html class="no-js" lang="en">
 
 <head>
     <meta charset="utf-8">
+	
     
     <!--====== Title ======-->
     <title>Evolve | Sanitary Pad</title>
@@ -61,6 +68,7 @@
 
     <!--====== preloader Ends ======-->
     <?php 
+	$current_page = "Forget Password";
 	  include('header.php');
 	?>
     <!--====== Header Start ======-->
@@ -72,7 +80,7 @@
             <div class="page-banner-content text-center">
                 <h2 class="title">Forgot Password</h2>
                 <ol class="breadcrumb justify-content-center">
-                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                    <li class="breadcrumb-item"><a href="Home">Home</a></li>
                     <li class="breadcrumb-item active">Forgot Password</li>
                 </ol>
             </div>
@@ -91,14 +99,28 @@
                         <h4 class="title">Forgot Password</h4>
 
                         <div class="login-register-form">
-                            <form action="#">
+                            <form id="forgot_pass_form" action="forget-password-code.php" method="POST">
                                 <div class="single-form">
                                     <label>Username or email address *</label>
-                                    <input type="email">
+                                    <input type="text" name="email" id="email">
+									<?php 
+									if(isset($_REQUEST['err']) && $_REQUEST['err'] == 1)
+									{
+										echo "<span style='color:green;font-weight: 600;'>Reset Password link send to your E-mail.</span>";
+									} 
+									else if(isset($_REQUEST['err']) && $_REQUEST['err'] == 2)
+									{
+										echo "<span style='color:red;font-weight: 600;'>Mail not sent Try again later.</span>";
+									}
+									else if(isset($_REQUEST['err']) && $_REQUEST['err'] == 3)
+									{
+										echo "<span style='color:red;font-weight: 600;'>Email Id does not exists.</span>";
+									}
+									?>
                                 </div>
                                
                                 <div class="single-form">
-                                    <button class="main-btn btn-block">Submit</button>
+                                    <input type="submit" style="color:white;" class="main-btn btn-block" value="Submit"/>
                                 </div>
                                
                                
@@ -125,97 +147,6 @@
     <a href="#" class="back-to-top"><i class="fal fa-chevron-up"></i></a>
 
     <!--====== BACK TOP TOP PART ENDS ======-->
-
-    <!--====== Product Quick View Start ======-->
-  
-    <div class="modal fade" id="productQuick">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fal fa-times"></i></button>
-                </div> 
-                
-                <div class="product-quick-view">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="quick-view-image">
-                                <div class="quick-view-thumb">
-                                    <div class="quick-thumb-active">
-                                        <div class="single-quick-thumb">
-                                            <img src="assets/images/product/product-37.jpg" alt="">
-                                        </div>
-                                        <div class="single-quick-thumb">
-                                            <img src="assets/images/product/product-38.jpg" alt="">
-                                        </div>
-                                        <div class="single-quick-thumb">
-                                            <img src="assets/images/product/product-27.jpg" alt="">
-                                        </div>
-                                        <div class="single-quick-thumb">
-                                            <img src="assets/images/product/product-28.jpg" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="quick-view-preview">
-                                    <div class="quick-preview-active">
-                                        <div class="single-quick-preview">
-                                            <img src="assets/images/product/product-37.jpg" alt="">
-                                        </div>
-                                        <div class="single-quick-preview">
-                                            <img src="assets/images/product/product-38.jpg" alt="">
-                                        </div>
-                                        <div class="single-quick-preview">
-                                            <img src="assets/images/product/product-27.jpg" alt="">
-                                        </div>
-                                        <div class="single-quick-preview">
-                                            <img src="assets/images/product/product-28.jpg" alt="">
-                                        </div>
-                                    </div>
-                                </div>                                
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="quick-view-content">
-                                <h4 class="title">Oversized Check Dress</h4>
-                                <span class="sku-id">REF. 1104693 - TOMY</span>
-
-                                <div class="quick-price">
-                                    <span class="regular-price">£250.00</span>
-                                    <span class="sale-price">£200.00</span>
-                                </div>
-                                <div class="quick-quantity-cart-wishlist-compare flex-wrap">
-                                   <form action="#">
-                                        <div class="quick-quantity d-flex">
-                                            <button type="button" class="sub"><i class="fal fa-minus"></i></button>
-                                            <input type="text" value="1" />
-                                            <button type="button" class="add"><i class="fal fa-plus"></i></button>
-                                        </div>
-                                        <div class="quick-cart">
-                                            <button class="main-btn">Add to Cart</button>
-                                        </div>
-                                   </form>
-                                   <a href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" class="quick-wishlist"><i class="fal fa-heart"></i></a>
-                                   <a href="#" data-tooltip="tooltip" data-placement="top" title="Add to Compare" class="quick-compare"><i class="fal fa-repeat-alt"></i></a>
-                                </div>
-                                <div class="quick-description">
-                                    <p>Sed vitae eros a quam malesuada porttitor nec nec orci. Ut lacus augue, bibendum at tristique at, ornare eget quam. Donec volutpat ut nibh id sagittis. Morbi fringilla ac libero in consequat.</p>
-                                </div>
-                                <div class="quick-share">
-                                    <ul class="social">
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--====== Product Quick View Ends ======-->
 
     <!--====== Start ======-->
 
@@ -272,7 +203,97 @@
 
     <script src="assets/js/plugins.min.js"></script>
 
-    
+	 <script src="backyard/js/jquery.validate.js"></script>
+    <script src="backyard/js/jquery.validate.min.js"></script>
+     <script>
+	$( document ).ready( function () {
+			$( "#forgot_pass_form" ).validate( {
+				rules: {
+					fullname: 
+					{
+						required: true,
+						minlength: 2,
+					},
+					lastname: "required",
+					phoneno: {
+						required: true,
+						 digits: true,
+						 minlength: 10,
+						maxlength: 10
+					},
+					username: {
+						required: true,
+						minlength: 2
+					},
+					password: {
+						required: true,
+						minlength: 5
+					},
+					confirm_password: {
+						required: true,
+						minlength: 5,
+						equalTo: "#password"
+					},
+					email: {
+						required: true,
+						email: true
+					},
+					agree: "required"
+				},
+				messages: {
+					fullname: 
+					{
+						required: "Please enter your fullname",
+						minlength: "Please enter alteast 2 charactor",
+					},
+					lastname: "Please enter your lastname",
+					username: {
+						required: "Please enter a username",
+						minlength: "Your username must consist of at least 2 characters"
+					},
+					phoneno: {
+						required: "Please enter a Phone Number ",
+						digits: "Enter Only Dighits",
+						minlength: "Enter Only 10 Dighits",
+						maxlength: "Enter Only 10 Dighits",
+					},
+					password: {
+						required: "Please provide a password",
+						minlength: "Your password must be at least 5 characters long"
+					},
+					confirm_password: {
+						required: "Please provide a password",
+						minlength: "Your password must be at least 5 characters long",
+						equalTo: "Please enter the same password as above"
+					},
+					email: {
+						required: "Please Enter Account E-mail",
+						email: "Please Enter Valid E-mail",
+						
+					},
+					agree: "Please accept our policy"
+				},
+				errorElement: "em",
+				errorPlacement: function ( error, element ) {
+					// Add the `invalid-feedback` class to the error element
+					error.addClass( "invalid-feedback" );
+
+					if ( element.prop( "type" ) === "checkbox" ) {
+						error.insertAfter( element.next( "label" ) );
+					} else {
+						error.insertAfter( element );
+					}
+				},
+				highlight: function ( element, errorClass, validClass ) {
+					$( element ).addClass( "is-invalid" ).removeClass( "is-valid" );
+				},
+				unhighlight: function (element, errorClass, validClass) {
+					$( element ).addClass( "is-valid" ).removeClass( "is-invalid" );
+				}
+			} );
+
+		} );
+	</script>
     <!--====== Main Activation  js ======-->
     <script src="assets/js/main.js"></script>
 

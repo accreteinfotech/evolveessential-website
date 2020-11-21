@@ -126,10 +126,15 @@
                                     <label>User Company *</label>
                                         <input type="text" name="user_company" id="user_company" value="">
                                 </div>
+								<div class="single-form">
+                                    <label>Birth Date *</label>
+                                        <input type="date" name="user_dob" id="user_dob" value="">
+                                </div>
                                 <div class="single-form">
                                      <label>Email address *</label>
-                                        <input type="email" name="user_email" id="user_email" value="">
+                                        <input type="email" onchange="mailcheck(this.value);" name="user_email" id="user_email" value="">
                                 </div>
+								<p id="ererror"></p>
                                 <div class="single-form">
                                     <label for="upassword">Password *</label>
                                         <input type="password" name="user_password" id="user_password" value="">
@@ -527,7 +532,7 @@
             input.attr("type", "password");
           }
         });
-
+		
     function mailcheck(val)
         {
             $.ajax({

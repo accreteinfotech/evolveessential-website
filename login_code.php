@@ -16,9 +16,9 @@ $password = md5($_POST['password']);
 		$_SESSION['user_full_name'] = $sql['user_full_name'];
 		
 		    $session_id=session_id();
-		    echo "success";
-			//$cart=$link->rawQuery("select * from cart where user_id=? and order_id=0",array($session_id));
-			/*if($link->count > 0)
+		    //echo "success";
+			$cart=$link->rawQuery("select * from cart where user_id=? and order_id=0",array($session_id));
+			if($link->count > 0)
 			{
 			    $link->where("user_id",$session_id);
 			    $up=$link->update("cart",array("user_id"=>$sql['user_id']));
@@ -50,13 +50,13 @@ $password = md5($_POST['password']);
 			else
 			{
 			    echo "success";
-			}*/
+			}
 		//header('location:dashboard/index.php');
-		/*if(isset($_POST['pid']) && $_POST['pid']!=null)
+		if(isset($_POST['pid']) && $_POST['pid']!=null)
 		{
 				echo "1";
 			
-		}*/
+		}
 	
 	}
 	elseif($password==null || $username==null)
