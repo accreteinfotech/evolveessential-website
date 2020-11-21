@@ -73,7 +73,7 @@ ul.dropdown-menu {
   letter-spacing: 1px;
 }
  </style>
- <header class="top-header-area d-flex align-items-center justify-content-between">
+ <header id="header" class="top-header-area d-flex align-items-center justify-content-between">
                 <div class="left-side-content-area d-flex align-items-center">
                     <!-- Mobile Logo -->
                     <div class="mobile-logo mr-3 mr-sm-4">

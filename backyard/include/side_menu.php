@@ -1,4 +1,4 @@
-<div class="ecaps-sidemenu-area">
+<div id="sidebar" class="ecaps-sidemenu-area">
             <!-- Desktop Logo -->
             <div class="ecaps-logo">
                 <a href="../dashboard/Dashboard">

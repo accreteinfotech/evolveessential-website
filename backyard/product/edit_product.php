@@ -166,7 +166,6 @@
                                             <label for="exampleInputName1" style="padding:10px 0px;">Product Additional Information</label>
 											<textarea type="text" name="additional_information" placeholder="Enter Information" class="form-control" id="ckeExample2"><?php echo $ad['additional_information']; ?></textarea>
 										</div>
-										<div id="price">
 										<div class="form-group">
                                             <label for="exampleInputName1" style="padding-top:20px;">Product Price</label>
 											<input type="text" name="product_price" value="<?php echo $ad['product_price']; ?>" placeholder="Enter Price" class="form-control" id="product_price">
@@ -208,7 +207,6 @@
 										<button type="submit" id="reg"  class="btn btn-primary mr-2">Submit</button>
                                         <button type="reset" class="btn btn-light">Cancel</button>
                                     </form>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -231,22 +229,6 @@
 	<script src="../js/jquery.validate.js"></script>
     <script src="../js/jquery.validate.min.js"></script>
 	<script>
-	$( document ).ready(function() {
-		var x=$( "input[type=radio][name=optradio]:checked" ).val();
-		inventory(x);
-		//alert(x);
-	});
-	function inventory(val)
-	{
-		if (val=="2")
-		{
-		  $("#price").css("display","block");
-		}
-		else
-		{
-			$("#price").css("display","none");
-		}
-	}
 	function aliascheck(val,val2)
 		{
 			$.ajax({

@@ -79,7 +79,7 @@ function confirmationDelete(anchor)
                                                 <th>Order Id</th>
 												<th>Order Status</th>
 												<th>Show</th>
-												<!--<th>Invoice</th>-->
+												<th>Invoice</th>
                                                 <th>Full Name</th>
                                                 <th>Company Name</th>
                                                 <th>Date</th>
@@ -138,7 +138,7 @@ function confirmationDelete(anchor)
 														}
 													?>
 														<td><a href="Show-Order-Detail/<?php echo $cat['order_product_id']; ?>"><img style="height: 30px;width: 30px;"  src="../img/eye.png"></a></td>
-														<!--<td><a href="Invoice/<?php //echo $cat['order_product_id']; ?>"><img style="height: 30px;width: 30px;"  src="../img/pdf.png"></a></td>-->
+														<td><a href="Invoice/<?php echo $cat['order_product_id']; ?>"><img style="height: 30px;width: 30px;"  src="../img/pdf.png"></a></td>
 														<td><?php echo $cat['full_name']; ?></td>
 														<td><?php echo $cat['order_company']; ?></td>
 														<td><?php echo date('d M, Y',strtotime($cat['order_date_time'])); ?></td>

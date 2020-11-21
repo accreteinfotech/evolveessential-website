@@ -91,7 +91,8 @@ ob_start();
     
     <!--====== Header Start ======-->
 
-		<?php 
+		<?php
+        $current_page = "My Account"; 
 		 include('header.php')
 		?>
 
@@ -103,7 +104,7 @@ ob_start();
             <div class="page-banner-content text-center">
                 <h2 class="title">My Account</h2>
                 <ol class="breadcrumb justify-content-center">
-                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                    <li class="breadcrumb-item"><a href="Home">Home</a></li>
                     <li class="breadcrumb-item active">My Account</li>
                 </ol>
             </div>
@@ -124,7 +125,7 @@ ob_start();
                               <a class="active" data-toggle="pill" href="#pills-dashboard"><i class="far fa-tachometer-alt-fast"></i> Dashboard</a>
                             </li>
                             <li>
-                              <a data-toggle="pill" href="#pills-order"><i class="far fa-Shopping-cart"></i> Order</a>
+                              <a data-toggle="pill" href="#pills-order" class="pills-order"><i class="far fa-Shopping-cart"></i> Order</a>
                             </li>
                            
                             <li>
@@ -142,7 +143,7 @@ ob_start();
                             <div class="my-account-dashboard account-wrapper">
                                 <h4 class="account-title">Dashboard</h4>
                                 <div class="welcome-dashboard">
-                                    <p>Hello, <strong>Alex Tuntuni</strong> (If Not <strong>Tuntuni !</strong> <a href="login.php">Logout</a> )</p>
+                                    <p>Hello, <strong><?php echo $_SESSION['user_full_name'];?></strong> (If Not <strong><?php echo $_SESSION['user_full_name'];?> !</strong> <a href="Logout">Logout</a> )</p>
                                 </div>
                                 <p class="mt-25">From your account dashboard. you can easily check & view your recent orders, manage your shipping and billing addresses and edit your password and account details.</p>
                             </div>
@@ -151,7 +152,7 @@ ob_start();
                             <div class="my-account-order account-wrapper">
                                 <h4 class="account-title">Orders</h4>
                                 <div class="account-table text-center mt-30 table-responsive">
-                                    <table class="table">
+                                    <table class="table" id="vieworder">
                                         <thead>
                                             <tr>
                                                 <th class="no">Order Id</th>
@@ -211,7 +212,7 @@ ob_start();
                                                     if($cat['order_total']!=0)
                                                     {
                                                 ?>
-                                                <td><?php echo sprintf("%.2f", $cat['order_total']); ?></td>
+                                                <td>INR <?php echo sprintf("%.2f", $cat['order_total']); ?></td>
                                                 <?php
                                                     }
                                                 ?>
@@ -230,6 +231,9 @@ ob_start();
                                             ?>
                                         </tbody>
                                       </table>
+									  <table class="table" id="showorder">
+                
+							</table>
                                 </div>
                             </div>
                         </div>
@@ -258,7 +262,7 @@ ob_start();
                                         </div>
                                         <div class="col-md-6">
                                             <div class="single-form">
-                                                <input type="submit" class="main-btn" name="save_account_details" value="Save changes">
+                                                <input type="submit" style="color:white;" class="main-btn" name="save_account_details" value="Save changes">
                                             </div>
                                         </div>
                                         <div>
@@ -581,7 +585,7 @@ ob_start();
 
         } );
 
-        function showorder(val)
+function showorder(val)
 {
     $.ajax({
            type: "POST",
@@ -605,7 +609,7 @@ ob_start();
            }
         });
 }
-$("#tab").click(function(){
+$(".pills-order").click(function(){
        $("#vieworder").css("display","table");
        $("#showorder").css("display","none");
 });

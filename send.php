@@ -36,6 +36,7 @@ ob_start();
 	{
 		$title="Password Reset Successful";
 		$msg="Your Account Password Change Successfully";
+		session_destroy();
 	}
 	if(isset($_GET['sid']) && $_GET['sid']==7)
 	{
@@ -48,26 +49,8 @@ ob_start();
    <?php
 		include 'head_code.php';
 	?>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png"/>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/css/bo otstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/css/animate.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/css/chosen.min.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/css/pe-icon-7-stroke.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/css/jquery.scrollbar.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/css/lightbox.min.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/css/magnific-popup.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/css/slick.min.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/fonts/flaticon.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/css/megamenu.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/css/dreaming-attribute.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/css/custom.css"/>
+    <link rel="stylesheet" href="assets/css/vendor/plugins.min.css">
+    <link rel="stylesheet" href="assets/css/style.min.css">
     
 	 <style>
     .mybtn
@@ -89,21 +72,23 @@ ob_start();
 </head>
 <body>
 <?php 
+$current_page = "Success";
 include('header.php');
 ?>
-<div class="site-main  main-container no-sidebar">
-    <div class="section-037">
+
+<section class="services-page pt-100 pb-160">
         <div class="container">
-            <div class="lynessa-popupvideo style-01">
-                <div class="popupvideo-inner" style="text-align:center;">
-                        <h3 > <?php echo $msg; ?></h3>
-						<img style="margin-left:auto;margin-right:auto;margin-top:30px;display:block;height:80%" src="assets/images/send.gif">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="services-title text-center">
+                        <h3 style="padding: 120px 0px; margin-bottom: 0px;"> <?php echo $msg; ?></h3>
+						<img style="margin-left:auto;margin-right:auto;padding-top:0px;margin-top:0px;display:block;height:80%" src="assets/images/send.gif">
 						<?php
 						if(isset($_GET['sid']) && $_GET['sid']==1 || isset($_GET['sid']) && $_GET['sid']==4 || isset($_GET['sid']) && $_GET['sid']==7)
 						{
 							?>
 							<div class="btn-wrapper">
-                                <a href="Login-Register" class="mybtn">Click Here For Login</a>
+                                <a href="Login-Register" style="width:30%;" class="main-btn btn-block">Click Here For Login</a>
                             </div>
 						
 							<?php
@@ -117,6 +102,7 @@ include('header.php');
             </div>
         </div>
     </div>
+</section>
 </div>
 <?php 
 include('footer.php');

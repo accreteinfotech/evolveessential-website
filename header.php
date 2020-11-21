@@ -148,6 +148,9 @@
 										{
 											?>
 											<span><i style="color:#4cda4c;padding-right: 5px;" class="fa fa-circle" aria-hidden="true"></i><?php echo $_SESSION['user_full_name']; ?></span>
+											<li><a class="block-link" href="logout.php">
+												<i class="fa fa-power-off"></i>
+											</a></li>
 											<?php
 										}
 										else
@@ -159,7 +162,53 @@
 											<?php
 										}
 									?>
-									<li><a class="cart-toggle" href="javascript:void(0)"><i class="far fa-Shopping-cart"></i><span>1</span></a></li>
+									
+									<li><a class="cart-toggle" href="javascript:void(0)"><i class="far fa-Shopping-cart"></i>
+									<span>
+									<?php
+										$cart=$link->rawQuery("select c.*,p.* from cart c,product p where c.product_id=p.product_id and c.user_id=? and c.order_id=0",array($uid));
+										if($link->count > 0)
+										{
+											$cart_count = $link->count ;
+											$total=0;
+											$gst_amount=0;
+											$shipping_amount=0;
+											$gst=0;
+											$grand_total=0;
+											if($cart_count==1)
+											{
+												foreach($cart as $cart1)
+												{
+													$product_total=($cart1['product_price']);
+													$shipping_amount=$shipping_amount+$cart1['product_shipping_charge'];
+													$gst=$product_total*$cart1['product_gst']/100;
+													$gst_amount=$gst_amount+$gst;
+													$total=$total+$product_total;
+													$grand_total=$gst_amount+$total+$shipping_amount;
+												}
+											}
+											else
+											{
+												foreach($cart as $cart1)
+												{
+													$product_total=($cart1['product_price']-50);
+													$shipping_amount=$shipping_amount+$cart1['product_shipping_charge'];
+													$gst=$product_total*$cart1['product_gst']/100;
+													$gst_amount=$gst_amount+$gst;
+													$total=$total+$product_total;
+													$grand_total=$gst_amount+$total+$shipping_amount;
+												}
+											}
+											echo $cart_count ;
+										}
+										else
+										{
+											$cart_count=0;
+											echo $cart_count ;
+										}
+									?>
+									</span></a></li>
+									
 									<li><a class="sidebar-toggle" href="javascript:void(0)"><i class="fal fa-bars"></i></a></li>
 								</ul>
 								<?php
@@ -286,29 +335,54 @@
                 </div>
                 <div class="cart-product-widget">
                     <ul>
-                        <li>
-                            <div class="cart-product d-flex">
-                                <div class="cart-product-image">
-                                    <a href="product.php"><img src="assets/images/cart/product-1.jpg" alt="product"></a>
-                                </div>
-                                <div class="cart-product-content media-body">
-                                    <h6 class="title"><a href="product.php">Sanitary Pad</a></h6>
-                                    <span class="price">1x <span>INR 249.00</span></span>
-                                </div>
-                                <a href="#" class="product-cancel"><i class="fal fa-times"></i></a>
-                            </div>
-                        </li>
-                       
-                      
+					<?php
+					$total_flag=0;
+					$cart=$link->rawQuery("select c.*,p.* from cart c,product p where c.product_id=p.product_id and c.user_id=? and c.order_id=0",array($uid));
+						if($link->count > 0)
+						{
+							$total_flag=1;
+							foreach($cart as $cart1)
+							{
+								?>
+								<li>
+									<div class="cart-product d-flex">
+										<div class="cart-product-image">
+											<a href="Product/<?php echo $cart1['product_alias']; ?>"><img src="backyard/images/product_image/<?php echo $cart1['product_image']; ?>" alt="product"></a>
+										</div>
+										<div class="cart-product-content media-body">
+											<h6 class="title"><a href="Product/<?php echo $cart1['product_alias']; ?>"><?php echo $cart1['product_name']; ?></a></h6>
+											<span class="price" style="font-size:12px;"><?php echo $cart1['light_flow']; ?> Mediam</span>
+											<span class="price" style="font-size:12px;"><?php echo $cart1['heavy_flow']; ?> Heavy</span></br>
+											<span class="price"><span>INR <?php echo sprintf("%.2f", $cart1['product_price']); ?></span></span>
+										</div>
+										<a style="cursor:pointer;" onClick="abc1(<?php echo $cart1['cart_id']; ?>);" class="product-cancel"><i class="fal fa-times"></i></a>
+									</div>
+								</li>
+								<?php
+							}
+						}
+						else
+						{
+							?>
+							<p style="text-align:center;">No Item Found</p>
+							<?php
+						}
+					?>
                     </ul>   
-                    <div class="cart-product-total">
-                        <p class="value">Subtotal</p>
-                        <p class="price">INR 249.00</p>
-                    </div>           
-                    <div class="cart-product-btn">
-                        <a href="cart.php" class="main-btn btn-block">View cart</a>
-                        <a href="checkout.php" class="main-btn btn-block">Checkout</a>
-                    </div>           
+					<?php
+						if($total_flag!=0)
+						{
+							?>
+							 <div class="cart-product-total">
+								<p class="value">Subtotal</p>
+								<p class="price">INR <?php echo sprintf("%.2f", $total) ; ?></p>
+							</div>         
+							 <div class="cart-product-btn">
+								<a href="Cart" class="main-btn btn-block">View cart</a>
+							</div>   
+							<?php
+						}
+				  ?>
                 </div>
             </div>
         </div>

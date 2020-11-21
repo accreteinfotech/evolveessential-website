@@ -148,11 +148,11 @@
                                 </div>
                                 <p id="rerror"></p>
                                 <div class="single-form">
-                                    <input type="submit" class="main-btn btn-block" name="login" value="Log in"></input>
+                                    <input type="submit" style="color:white;" class="main-btn btn-block" name="login" value="Log in"></input>
                                 </div>
                                 <div class="single-form d-flex justify-content-between">
                                     <div class="checkbox">
-                                        <input type="checkbox" name="remember" type="checkbox" id="rememberme" <?php if(isset($_COOKIE['user'])){ echo "checked"; } ?>>
+                                        <input type="checkbox" name="remember" type="checkbox" id="remember" <?php if(isset($_COOKIE['user'])){ echo "checked"; } ?>>
                                         <label for="remember"><span></span> Remember Me</label>
                                     </div>
                                     <div class="forget">
@@ -357,14 +357,14 @@
         var cid = $("#cid").val();
         $.ajax({
              type: "POST",
-           url: "Login-Code",
+           url: "login_code.php",
            data: $("#loginform").serialize(),
                 
                 // serializes the form's elements.
            success: function(data)
            {
                 //alert (data);
-                 if(data == 'success')
+                 if(data == 'success' || data== 'successsuccess')
                 {
                     window.location.href='Home';
                 }

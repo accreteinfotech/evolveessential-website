@@ -1,7 +1,7 @@
 <?php
 	include 'MysqliDb.php';
- 	$link=new MysqliDb("localhost","root","","evovle");
- 	$con = mysqli_connect('localhost','root','','evovle');
+ 	$link=new MysqliDb("localhost","root","","evolve");
+ 	$con = mysqli_connect('localhost','root','','evolve');
 	
 //	$link=new MysqliDb("localhost","thehonvq_waxberr","thehonvq_waxberr","thehonvq_waxberr");
 //	$con = mysqli_connect('localhost','thehonvq_waxberr','thehonvq_waxberr','thehonvq_waxberr');
@@ -10,7 +10,7 @@
 	ini_set('UPLOAD_MAX_FILESIZE','64M');
 	$project_name="EvolveEssential";
 	
-	$site_url="http://localhost/evolveessential-website/";
+	$site_url="http://localhost/evolveessential/";
 //	$site_url="http://accreteit.com/wax-berry/";
 	$project_logo=$site_url."images/logo.png";
 	
@@ -30,6 +30,7 @@
 	$send_address="harsh.fruitwala6579@gmail.com";
 	$send_address="yashrajpindi@gmail.com";
 	
+	$discount=0;
 	//Payment Getway API 
 	//Live Api
 	//$payment_getway_api="rzp_live_jqKU7RvCPSeCTd";
