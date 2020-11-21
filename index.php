@@ -10,7 +10,6 @@ ob_start();
     <!--====== Title ======-->
     <?php
     include 'backyard/include/connect.php';
-	session_start();
     $seo=$link->rawQueryone("select * from page_seo where page_seo_url=?",array($page_name));
     if($link->count > 0)
     {
@@ -319,7 +318,7 @@ body .testimonial .row .carousel .carousel-inner .carousel-item .quote-wrapper h
 
     <section class="shop-banner-area-6 banner-section-1 d-flex align-items-center bg_cover" style="background-image: url(assets/images/Banner_1.jpg);background-position: center;
     background-repeat: no-repeat;
-    background-size: contain">
+    background-size: auto;">
        
     </section>
 
@@ -327,48 +326,30 @@ body .testimonial .row .carousel .carousel-inner .carousel-item .quote-wrapper h
 
     <!--====== Shop Banner Start ======-->
 
-    <section class="shop-banner-area-6 banner-section-2 d-flex align-items-center bg_cover" style="background-image: url(assets/images/2.jpg);">
-        <div class="container">
-            <div class="shop-banner-content-6 text-center">
-                <div class="heading">
-                    <h1 class="title heading-1">Thoughtful Packaging</h1>
-                            <p style="padding-top:30px;color:#ffffff;">Biologically designed to degraded along with the disposal of the used products. We are putting our bit conserving nature, When are you upgrading?</p>
-                </div>
-                
-            </div>
-        </div>
+    <section class="shop-banner-area-6 banner-section-2 d-flex align-items-center bg_cover" style="background-image: url(assets/images/Thoughtfull_packaging.jpg);background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;">
+        
     </section>
 
     <!--====== Shop Banner Ends ======-->
 
     <!--====== Shop Banner Start ======-->
 
-    <section class="shop-banner-area-6 banner-section-3 d-flex align-items-center bg_cover" style="background-image: url(assets/images/3.jpg);">
-        <div class="container">
-            <div class="shop-banner-content-6 text-center">
-                <div class="heading">
-                     <h1 class="title heading-1">Easy Access</h1>
-                            <p style="padding-top:30px;color:#ffffff;">Sanitary napkins are an essential part of personal hygiene and we take it personally to avoid those last minute emergencies. Keep yourself stocked up for your next cycle!</p>
-                </div>
-                
-            </div>
-        </div>
+    <section class="shop-banner-area-6 banner-section-3 d-flex align-items-center bg_cover" style="background-image: url(assets/images/3.jpg);background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;">
+        
     </section>
 
     <!--====== Shop Banner Ends ======-->
 
     <!--====== Shop Banner Start ======-->
 
-    <section class="shop-banner-area-6 banner-section-4 d-flex align-items-center bg_cover" style="background-image: url(assets/images/4.jpg);">
-        <div class="container">
-            <div class="shop-banner-content-6 text-center">
-                <div class="heading">
-                  <h1 class="title heading-1">Stress free-Hassle free</h1>
-                            <p style="padding-top:30px;color:#ffffff;">Happy period with Acrobat cotton napkins!</p>
-                </div>                
-               
-            </div>
-        </div>
+    <section class="shop-banner-area-6 banner-section-4 d-flex align-items-center bg_cover" style="background-image: url(assets/images/4.jpg);background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;">
+        
     </section>
 
    

@@ -8,7 +8,6 @@
     <!--====== Title ======-->
     <?php
     include 'backyard/include/connect.php';
-	session_start();
     $seo=$link->rawQueryone("select * from page_seo where page_seo_url=?",array($page_name));
     if($link->count > 0)
     {
