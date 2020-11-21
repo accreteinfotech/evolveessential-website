@@ -336,7 +336,7 @@ body .testimonial .row .carousel .carousel-inner .carousel-item .quote-wrapper h
 
     <!--====== Shop Banner Start ======-->
 
-    <section class="shop-banner-area-6 banner-section-3 d-flex align-items-center bg_cover" style="background-image: url(assets/images/3.jpg);background-position: center;
+    <section class="shop-banner-area-6 banner-section-3 d-flex align-items-center bg_cover" style="background-image: url(assets/images/Easy_to_access.jpg);background-position: center;
     background-repeat: no-repeat;
     background-size: auto;">
         
@@ -346,7 +346,7 @@ body .testimonial .row .carousel .carousel-inner .carousel-item .quote-wrapper h
 
     <!--====== Shop Banner Start ======-->
 
-    <section class="shop-banner-area-6 banner-section-4 d-flex align-items-center bg_cover" style="background-image: url(assets/images/4.jpg);background-position: center;
+    <section class="shop-banner-area-6 banner-section-4 d-flex align-items-center bg_cover" style="background-image: url(assets/images/Stress_Free.jpg);background-position: center;
     background-repeat: no-repeat;
     background-size: auto;">
         

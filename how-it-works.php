@@ -8,7 +8,6 @@
     <!--====== Title ======-->
     <?php
     include 'backyard/include/connect.php';
-	session_start();
     $seo=$link->rawQueryone("select * from page_seo where page_seo_url=?",array($page_name));
     if($link->count > 0)
     {
@@ -158,7 +157,7 @@
 						</div>
 						<div class="col-12 col-lg-6">
 							<div class="step-center-part text-center last">
-								<img src="assets/images/Clean.gif" alt="">
+								<img src="assets/images/Clean_new.gif" alt="">
 							</div>
 						</div>
 					
